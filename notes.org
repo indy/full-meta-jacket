@@ -8,3 +8,7 @@ using http://expressjs.com/guide.html
 express eugenia
 cd eugenia
 npm install -d
+
+sudo npm install -g nodemon
+
+nodemon app.js
