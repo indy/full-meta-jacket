@@ -12,3 +12,9 @@ npm install -d
 sudo npm install -g nodemon
 
 nodemon app.js
+
+
+* todo
+  1. create headdown library
+     based on showdown but has header information that can be ignored
+  2. add headdown as a view engine for express
