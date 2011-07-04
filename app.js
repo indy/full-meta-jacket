@@ -11,7 +11,7 @@ var app = module.exports = express.createServer();
 
 app.configure(function(){
   app.set('views', __dirname + '/views');
-  app.set('view engine', 'jade');
+  app.set('view engine', 'headdown');
   app.use(express.bodyParser());
   app.use(express.methodOverride());
   app.use(app.router);
@@ -31,12 +31,13 @@ app.configure('production', function(){
 app.get('/', function(req, res){
   res.render('index', {
     title: 'Eugenia',
-    nested: {name: 'nested name'}
+    nested: {name: 'a simple nested name'}
   });
 });
 
 app.get('/blog', function(req, res){
   res.render('index', {
+    layout: false,
     title: 'blog',
     nested: {name: 'nested name from blog'}
   });
