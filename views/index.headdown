@@ -1,0 +1,5 @@
+---
+"subhead": "heres a subheading"
+---
+#{{= title }}
+Welcome to {{= title }} indy {{= subhead }} {{= nested.name }}
