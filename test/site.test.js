@@ -24,5 +24,10 @@ exports['build metadata'] = function() {
 
   // sub-directory posts
 
-//  assert.eql(m, 42);
+}
+
+exports['render folder'] = function() {
+//  var meta = site.buildMetadata('test/files/traverse-2');
+//  site.renderFolder(meta, 'test/files/traverse-2', 'tmp/test-traverse-2');
+  assert.eql(2, 2);
 }
