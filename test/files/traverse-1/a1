@@ -1,0 +1,4 @@
+---
+"names": ["foo", "bar", "baz"]
+---
+{{=: names | prefixWith:'* '}}

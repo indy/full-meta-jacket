@@ -4,6 +4,5 @@
   , "private": true
   , "dependencies": {
       "express": "2.3.12"
-    , "imbue": ">= 0.0.3"
   }
 }
