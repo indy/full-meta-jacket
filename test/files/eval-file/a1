@@ -1,0 +1,12 @@
+---
+"names": ["foo", "bar", "baz"]
+---
+#{{= title}}
+
+Here are the sub-directories
+
+{{=: _directories | prefixWith:'* '}}
+
+Here are some locally defined names
+
+{{=: names | prefixWith:'* '}}
