@@ -1,0 +1,7 @@
+---
+"names": ["foo", "bar", "baz"],
+"_noMarkdown": true
+---
+{{=: names | prefixWith:'* '}}
+
+Content goes here: {{ content }}
