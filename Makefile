@@ -1,6 +1,9 @@
 test:
 	expresso test/*.test.js
 
+temptest:
+	expresso test/site.test.js
+
 docs:
 	docco index.js
 	docco lib/*.js
