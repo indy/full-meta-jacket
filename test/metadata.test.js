@@ -5,6 +5,8 @@ var metadata = require('../lib/metadata');
 // load metadata for one heirarchy and test multiple aspects from it
 var m = metadata.build('test/files/traverse-1');
 
+//console.log(m);
+
 
 exports['number of files in a folder'] = function() {
   assert.eql(3, m._files.length);
@@ -19,6 +21,10 @@ exports['implicit file metadata'] = function() {
   assert.eql("a1", m.a1.filename);
   assert.eql("b2", m.b2.filename);
   assert.eql("c3", m.c3.filename);
+}
+
+exports['explicit file metadata'] = function() {
+  assert.eql(3, m.a1.page.names.length);
 }
 
 exports['implicit file metadata (in a sub-directory)'] = function() {
