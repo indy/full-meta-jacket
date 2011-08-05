@@ -5,7 +5,7 @@ var fs = require('fs');
 
 var prefix = 'test/files/';
 
-/*
+
 exports['eval file'] = function() {
 
   var meta = metadata.build('test/files/eval-file');
@@ -13,8 +13,9 @@ exports['eval file'] = function() {
   var expected = fs.readFileSync('test/files/eval-file-expected/a1', 'utf8');
   assert.equal(res, expected);
 }
-*/
 
+/*
 exports['build site'] = function() {
   site.build('/Users/indy/mem/tempa', '/Users/indy/mem/tempb');
 }
+*/
