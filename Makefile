@@ -1,3 +1,6 @@
+site:
+	expresso test/sitetemp.js
+
 test:
 	expresso test/*.test.js
 
