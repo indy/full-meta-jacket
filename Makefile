@@ -7,6 +7,9 @@ test:
 temptest:
 	expresso test/site.test.js
 
+temp:
+	expresso test/published_date.test.js
+
 docs:
 	docco index.js
 	docco lib/*.js
