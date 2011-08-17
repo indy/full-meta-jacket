@@ -9,4 +9,4 @@ Here are the sub-directories
 
 Here are some locally defined names
 
-{{=: page.names | prefixWith:'* '}}
+{{=: names | prefixWith:'* '}}

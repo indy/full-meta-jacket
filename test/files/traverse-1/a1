@@ -1,4 +1,4 @@
 ---
 "names": ["foo", "bar", "baz"]
 ---
-{{=: page.names | prefixWith:'* '}}
+{{=: names | prefixWith:'* '}}

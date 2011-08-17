@@ -24,7 +24,7 @@ exports['implicit file metadata'] = function() {
 }
 
 exports['explicit file metadata'] = function() {
-  assert.eql(3, m.a1.page.names.length);
+  assert.eql(3, m.a1.names.length);
 }
 
 exports['implicit file metadata (in a sub-directory)'] = function() {
