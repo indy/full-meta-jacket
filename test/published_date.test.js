@@ -3,6 +3,10 @@ var site = require('../lib/site');
 var metadata = require('../lib/metadata');
 var fs = require('fs');
 
+function writeMeta(filename, meta) {
+  fs.writeFileSync(filename, JSON.stringify(meta, null, 4));
+}
+
 
 exports['published date'] = function() {
 
@@ -11,12 +15,15 @@ exports['published date'] = function() {
   // object and ordered correctly
 
   var meta = metadata.build('test/files/published_date');
+
+  writeMeta("/Users/indy/mem/meta.js", meta);
+
   assert.equal(meta.journal._posts._published.length, 3);
 
   var expectedDates = ["2011-08-16", "2011-09-16", "2011-10-16"];
   var published = meta.journal._posts._published;
   for(var i=0;i<expectedDates.length;i++){
-    assert.equal(published[i].page.published_date, expectedDates[i]);
+    assert.equal(published[i].published_date, expectedDates[i]);
   }
 
 }
