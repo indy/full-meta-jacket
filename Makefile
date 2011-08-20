@@ -8,7 +8,7 @@ temptest:
 	expresso test/site.test.js
 
 temp:
-	expresso test/published_date.test.js
+	expresso test/metadata2.test.js
 
 docs:
 	docco index.js

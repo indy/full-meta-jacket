@@ -1,0 +1,5 @@
+---
+"names": ["foo", "bar", "baz"],
+"published_date": "2011-09-16"
+---
+{{=: names | prefixWith:'* '}}

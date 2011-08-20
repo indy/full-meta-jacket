@@ -1,0 +1,8 @@
+---
+"layout": "default",
+"title": "Journal",
+"listing_image": "/img/journal.png",
+"listing_image_title": "Journal"
+---
+
+{{=: posts | listPosts }}
