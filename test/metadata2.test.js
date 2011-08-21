@@ -8,7 +8,7 @@ var m = metadata.build('test/files/traverse-2');
 utils.writeMeta('../new-meta.js', m);
 
 
-exports['metadata structured according to how content will be served'] = function() {
+exports['metadata structured around served content'] = function() {
   assert.ok(m['index.html']);
 
   // also check that posts are in the right place
@@ -17,8 +17,16 @@ exports['metadata structured according to how content will be served'] = functio
   assert.ok(m['journal']['c3.html']);
 }
 
+exports['posts metadata'] = function() {
+  var postsMeta = m['journal']['_locals']['posts'];
 
-//exports['local variables in file'] = function() {
-//  assert.eql("murmur@example.com", m['index.html'].locals.email);
-//}
+  assert.eql(postsMeta.length, 3);
+}
+
+// note: filters that iterate through posts will need to check published_date
+
+
+exports['local variables in file'] = function() {
+  assert.eql("murmur@example.com", m['index.html']._locals.email);
+}
 
