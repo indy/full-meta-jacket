@@ -4,7 +4,7 @@ var utils = require('../lib/utils');
 
 
 // load metadata for one heirarchy and test multiple aspects from it
-var m = metadata.build('test/files/traverse-2');
+var m = metadata.fullBuild('test/files/traverse-2');
 utils.writeMeta('../new-meta.js', m);
 
 

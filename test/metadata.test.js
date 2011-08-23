@@ -3,7 +3,7 @@ var metadata = require('../lib/metadata');
 
 
 // load metadata for one heirarchy and test multiple aspects from it
-var m = metadata.build('test/files/traverse-1');
+var m = metadata.fullBuild('test/files/traverse-1');
 
 //console.log(m);
 

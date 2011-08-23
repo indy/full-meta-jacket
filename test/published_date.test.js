@@ -14,7 +14,7 @@ exports['published date'] = function() {
   // attribute. This tests to make sure they're copied into a published
   // object and ordered correctly
 
-  var meta = metadata.build('test/files/published_date');
+  var meta = metadata.fullBuild('test/files/published_date');
 
   writeMeta("/Users/indy/mem/meta.js", meta);
 

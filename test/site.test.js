@@ -12,7 +12,7 @@ exports['eval file'] = function() {
 /*
 exports['eval file'] = function() {
 
-  var meta = metadata.build('test/files/eval-file');
+  var meta = metadata.fullBuild('test/files/eval-file');
   var res = site.renderFile(meta, 'test/files/eval-file/a1');
   var expected = fs.readFileSync('test/files/eval-file-expected/a1', 'utf8');
   assert.equal(res, expected);
