@@ -1,5 +1,6 @@
 ---
 "names": ["foo", "bar", "baz"],
-"published_date": "2011-10-16"
+"published_date": "2011-10-16",
+"journal-title": "custom title"
 ---
 {{=: names | prefixWith:'* '}}
