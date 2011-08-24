@@ -43,9 +43,12 @@ exports['scopedBuild journal/c3.html'] = function() {
   assert.eql(scoped.siteName, "FakeSite");
 }
 
-exports['scopedBuild for a pure html page'] = function() {
+exports['scopedBuild for simple content'] = function() {
   var scoped = metadata.scopedBuild(m, '/simple/simple.html');
   assert.eql(scoped['filename'], 'simple.html');
+
+  scoped = metadata.scopedBuild(m, '/simple/simple.png');
+  assert.eql(scoped['_directCopy'], true);
 }
 
 exports['metadata structured around served content'] = function() {
