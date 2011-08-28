@@ -16,9 +16,9 @@ exports['number of subdirectories, ignoring layouts directory'] = function() {
 }
 
 exports['implicit file metadata'] = function() {
-  assert.eql("a1", m.a1._locals.filename);
-  assert.eql("b2", m.b2._locals.filename);
-  assert.eql("c3", m.c3._locals.filename);
+  assert.eql("/a1", m.a1._locals._filename);
+  assert.eql("/b2", m.b2._locals._filename);
+  assert.eql("/c3", m.c3._locals._filename);
 }
 
 exports['explicit file metadata'] = function() {
@@ -26,7 +26,7 @@ exports['explicit file metadata'] = function() {
 }
 
 exports['implicit file metadata (in a sub-directory)'] = function() {
-  assert.eql("d4", m.foo.d4._locals.filename);
+  assert.eql("/foo/d4", m.foo.d4._locals._filename);
 }
 
 exports['top-level zonal metadata'] = function() {
