@@ -1,5 +1,6 @@
 ---
-"names": ["foo", "bar", "baz"],
-"published_date": "2011-08-16"
+"title": "first post",
+"published_date": "2011-08-16",
+"names": ["foo", "bar", "baz"]
 ---
 {{=: names | prefixWith:'* '}}

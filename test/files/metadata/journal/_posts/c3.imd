@@ -1,6 +1,7 @@
 ---
-"names": ["foo", "bar", "baz"],
+"title": "third post",
 "published_date": "2011-10-16",
-"journal-title": "custom title"
+"journal-title": "custom title",
+"names": ["foo", "bar", "baz"]
 ---
 {{=: names | prefixWith:'* '}}
