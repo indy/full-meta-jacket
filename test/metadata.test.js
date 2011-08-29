@@ -32,7 +32,8 @@ exports['implicit file metadata'] = function() {
   assert.eql("/journal/_posts/b2.imd", j['b2.html']._locals._filename);
   assert.eql("/journal/_posts/c3.imd", j['c3.html']._locals._filename);
 
-
+  assert.eql("/index.html", m['index.html']._locals.uri);
+  assert.eql("/simple/simple.png", m.simple['simple.png']._locals.uri);
   assert.eql("/journal/a1.html", j['a1.html']._locals.uri);
   assert.eql("/journal/b2.html", j['b2.html']._locals.uri);
   assert.eql("/journal/c3.html", j['c3.html']._locals.uri);
