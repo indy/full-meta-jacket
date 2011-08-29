@@ -2,10 +2,8 @@ var assert = require('assert');
 var metadata = require('../lib/metadata');
 var utils = require('../lib/utils');
 
-
 // load metadata for one heirarchy and test multiple aspects from it
-var m = metadata.fullBuild('test/files/traverse-2');
-utils.writeMeta('../new-meta.js', m);
+var m = metadata.fullBuild('test/files/metadata');
 
 exports['scopedBuild index.html'] = function() {
   var scoped = metadata.scopedBuild(m, '/index.html');
