@@ -8,6 +8,9 @@ docs:
 	docco app.js
 	docco lib/*.js
 
+
+all: test docs
+
 # use the ruby watchr gem to run tests 
 # whenever a source/test file is modified
 watch:
