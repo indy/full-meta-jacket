@@ -4,14 +4,8 @@ site:
 test:
 	expresso test/*.test.js
 
-temptest:
-	expresso test/site.test.js
-
-temp:
-	expresso test/metadata2.test.js
-
 docs:
-	docco index.js
+	docco app.js
 	docco lib/*.js
 
 # use the ruby watchr gem to run tests 
