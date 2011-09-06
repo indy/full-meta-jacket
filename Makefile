@@ -1,5 +1,6 @@
+
 site:
-	expresso test/sitetemp.js
+	node lib/buildSite.js
 
 test:
 	expresso test/*.test.js
@@ -7,7 +8,6 @@ test:
 docs:
 	docco app.js
 	docco lib/*.js
-
 
 all: test docs
 
