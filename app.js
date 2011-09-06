@@ -4,6 +4,9 @@
  */
 
 var express = require('express');
+var imbue = require('imbue');
+
+var metadata = require('./lib/metadata');
 
 var app = module.exports = express.createServer();
 
@@ -26,7 +29,28 @@ app.configure('production', function(){
   app.use(express.errorHandler()); 
 });
 
+
+// add common filters to imbue
+imbue.addFilters(filters);
+var folder = '../indy.io'
+var meta = metadata.fullBuild(folder);
+
+
 // Routes
+
+
+
+app.get('*', function(req, res){
+  var path = req.params[0];
+
+//  res.send(JSON.stringify(path, null, 4));
+
+  // convert / -> /index.html and foo/bar/ -> foo/bar/index.html
+  res.send(site.renderString(meta, processedPath));
+
+});
+
+
 /*
 app.get('/', function(req, res){
   res.render('index', {
