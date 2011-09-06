@@ -1,19 +1,31 @@
 
+DOCCO ?= `which docco`
+WATCHR ?= `which watchr`
+
 site:
-	node lib/buildSite.js
+	node aux/buildSite.js
 
 test:
 	expresso test/*.test.js
 
 docs:
-	docco app.js
-	docco lib/*.js
+	@@if test ! -z ${DOCCO}; then \
+		docco app.js; \
+		docco lib/*.js; \
+	else \
+		echo "You must have docco installed in order to build the documentation."; \
+		echo "You can install it by running: npm install docco -g"; \
+	fi
+
+watch:
+	@@if test ! -z ${WATCHR}; then \
+	  echo "Watching lib and test folders..."; \
+	  watchr aux/watching.rb; \
+	else \
+		echo "You must have the watchr installed in order to watch Full Meta Jacket."; \
+		echo "You can install it by running: gem install watchr"; \
+	fi
 
 all: test docs
-
-# use the ruby watchr gem to run tests 
-# whenever a source/test file is modified
-watch:
-	watchr watching.rb
 
 .PHONY: test docs watch
