@@ -1,12 +1,20 @@
-
+EXPRESSO ?= `which expresso`
 DOCCO ?= `which docco`
 WATCHR ?= `which watchr`
+
+server:
+	node app.js
 
 site:
 	node aux/buildSite.js
 
 test:
-	expresso test/*.test.js
+	@@if test ! -z ${EXPRESSO}; then \
+		expresso test/*.test.js; \
+	else \
+		echo "Running the tests requires expresso."; \
+		echo "You can install it by running: npm install expresso -g"; \
+	fi
 
 docs:
 	@@if test ! -z ${DOCCO}; then \
