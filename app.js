@@ -7,6 +7,9 @@ var express = require('express');
 var imbue = require('imbue');
 
 var metadata = require('./lib/metadata');
+var page = require('./lib/page');
+var filters = require('./lib/filters');
+var utils = require('./lib/utils');
 
 var app = module.exports = express.createServer();
 
@@ -32,41 +35,28 @@ app.configure('production', function(){
 
 // add common filters to imbue
 imbue.addFilters(filters);
-var folder = '../indy.io'
-var meta = metadata.fullBuild(folder);
-
+var meta = metadata.fullBuild('../indy.io');
+//utils.writeMeta('../foobar.meta.js', meta);
 
 // Routes
 
 
+// maybe add some routes here to get the js/css files
+
 
 app.get('*', function(req, res){
+
   var path = req.params[0];
+  if(path.slice(-1) === '/') {
+    path += 'index.html';
+  }
 
-//  res.send(JSON.stringify(path, null, 4));
+  var headers = path.slice(-3) === 'css' ? {'Content-Type': 'text/css' } : {};  
+  var content = page.render(meta, path);
 
-  // convert / -> /index.html and foo/bar/ -> foo/bar/index.html
-  res.send(site.renderString(meta, processedPath));
+  res.send(content, headers);
 
 });
-
-
-/*
-app.get('/', function(req, res){
-  res.render('index', {
-    title: 'murmur',
-    nested: {name: 'a simple nested name'}
-  });
-});
-
-app.get('/blog', function(req, res){
-  res.render('index', {
-    layout: false,
-    title: 'blog',
-    nested: {name: 'nested name from blog'}
-  });
-});
-*/
 
 app.listen(3000);
 console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
