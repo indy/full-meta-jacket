@@ -33,16 +33,22 @@ app.configure('production', function(){
 });
 
 
+
+
+var folder = '../indy.io';
+
+// filters may need to load in snippets from the input folder
+//
+filters.setup(folder);
+
 // add common filters to imbue
-imbue.addFilters(filters);
-var meta = metadata.fullBuild('../indy.io');
+imbue.addFilters(filters.publicFilters);
+
+var meta = metadata.fullBuild(folder);
+
 //utils.writeMeta('../foobar.meta.js', meta);
 
-// Routes
-
-
 // maybe add some routes here to get the js/css files
-
 
 app.get('*', function(req, res){
 
