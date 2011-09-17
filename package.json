@@ -1,8 +1,9 @@
 {
-    "name": "murmur"
-  , "version": "0.0.1"
-  , "private": true
-  , "dependencies": {
-      "express": "2.3.12"
+  "name": "murmur",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "express": "2.3.12",
+    "less": "1.1.4"
   }
 }

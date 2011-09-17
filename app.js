@@ -58,9 +58,10 @@ app.get('*', function(req, res){
   }
 
   var headers = path.slice(-3) === 'css' ? {'Content-Type': 'text/css' } : {};  
-  var content = page.render(meta, path);
 
-  res.send(content, headers);
+  page.render(meta, path, function(content) {
+    res.send(content, headers);
+  });
 
 });
 
