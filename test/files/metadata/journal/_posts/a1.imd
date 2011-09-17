@@ -1,6 +1,6 @@
 ---
 "title": "first post",
-"published_date": "2011-08-16",
+"date": "2011-08-16",
 "names": ["foo", "bar", "baz"]
 ---
 {{=: names | prefixWith:'* '}}
