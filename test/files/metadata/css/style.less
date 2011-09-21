@@ -1,0 +1,400 @@
+
+/* ------------------------------
+   configure base grid/font sizes
+   ------------------------------ */
+
+@line: 24;
+@column: 100% / 18;
+@font-size: 16;
+@em:@font-size*1em;
+
+
+/* ---------------------------
+   configure available palette
+   --------------------------- */
+
+@base03:    #002b36;  // darkest
+@base02:    #073642;  // dark
+@base01:    #586e75;  
+@base00:    #657b83;
+@base0:     #839496;
+@base1:     #93a1a1;
+@base2:     #eee8d5;  
+@base3:     #fdf6e3;  // light background
+
+@white:     #ffffff;
+@yellow:    #b58900;
+@orange:    #cb4b16;
+@red:       #dc322f;
+@magenta:   #d33682;
+@violet:    #6c71c4;
+@blue:      #268bd2;
+@cyan:      #2aa198;
+@green:     #859900;
+
+/* ---------------------------------
+   only use palette colours for site
+   --------------------------------- */
+
+@text-colour: @base02;
+@main-background-colour: @white;
+@main-title-colour: @base1;
+@date-colour: @base1;
+@highlight-colour: @base03;
+@highlight-background-colour: @base2;
+@code-colour: @base01;
+@code-background-colour: @base3;
+
+
+/*
+*
+*  Simple fluid media
+*
+*/
+
+figure {
+	position: relative;
+}
+figure img, figure object, figure embed, figure video {
+	max-width: 100%; 
+	display: block;
+}
+img {
+	border: 0; 
+	-ms-interpolation-mode: bicubic;
+}
+
+
+/*
+*
+*	Zoomable baseline grid
+*	type size presets
+*
+*/
+
+body {
+	/* 16px / 24px */
+	font-size: @font-size / 16 * 1em; 
+	line-height: @line / @em;
+}
+
+.small {
+	/* 13px / 18px */
+	font-size: (@font-size*0.8125) / @em;
+	line-height: (@line*0.75) / (@font-size*0.8125) * 1em;
+}
+
+.normal, h3 {
+	/* 16px / 24px */
+	font-size: @font-size / @em;
+	line-height: @line / @em; /* 24 */
+}
+
+.large, h2, h1 {
+	/* 26 / 36px */
+	font-size: 26 / @em;
+	line-height: (@line*1.5) / 26 * 1em;
+}
+
+.huge {
+	/* 42px / 48px */
+	font-size: 42 / @em;
+	line-height: (@line*2) / 42 * 1em;
+}
+
+.massive {
+	/* 68px / 72px */
+	font-size: 68 / @em;
+	line-height: (@line*3) / 68 * 1em;
+}
+
+.gigantic {
+	/* 110px / 120px */
+	font-size: 110 / @em;
+	line-height: (@line*5) / 110 * 1em;
+}
+
+
+body {
+  background: @main-background-colour;
+  color: @text-colour;
+}
+
+pre {
+	.small();
+  padding: 1em;
+  background: @code-background-colour;
+  color: @code-colour;
+}
+
+::-moz-selection { background: @highlight-background-colour; color:@highlight-colour ; text-shadow: none; }
+::selection { background: @highlight-background-colour; color: @highlight-colour; text-shadow: none; }
+
+
+
+/*
+*
+*  Four-column grid active
+*  ----------------------------------------
+*  Margin   | #  1   2   3   4   |   Margin
+*  5.55555% | %  25  50  75  100 | 5.55555%
+*
+*/
+
+#site-title a { 
+    color: @main-title-colour;
+    text-decoration: none; 
+    &:visited { color: @main-title-colour; }
+    &:hover { color: @main-title-colour; }
+}
+
+
+a, a:visited, a:hover { color: @text-colour; }
+
+
+/* just use the full width of the screen when we're down to a 4 column grid */
+
+/* #front-page-listing  */
+article .side-content {
+		float: left;
+    width: (100% / 4) * 4;
+
+    header {
+        h1 {
+            margin-top: 0.0em;
+            margin-bottom: 0em;
+        }
+    }
+
+    img { margin-top: 1em; }
+}
+
+time { color: @date-colour; }
+
+
+/* #front-page-listing */
+article section {
+		float: left;
+    width: (100% / 4) * 4;
+}
+
+#container {
+	margin: 0 @column;
+}
+
+h1, h2 {
+	margin: (24/26*1em) 0 (36/26*1em);
+}
+
+h2 {
+	font-weight: normal;
+
+  /* add to all h2 not just front-page-listing */
+  margin-top: 0;
+  margin-bottom: 0;
+
+}
+
+h3 {
+	margin: (24/@em) 0 (24/@em);
+}
+
+/* spread out the article listings */
+#front-page-listing .clearfix {
+    margin-bottom: 2em;
+}
+
+/*
+*  Simple elastic gutters
+*  Note: box-sizing will not work in IE6-8
+*/
+
+.wrapper {
+	padding: 0 (@line/2)/@em;
+	-webkit-box-sizing: border-box;
+	   -moz-box-sizing: border-box;
+		 -o-box-sizing: border-box;
+			box-sizing: border-box;
+}
+
+
+/*
+*
+*  Fixes for IE6-8
+*  http://jonikorpi.com/leaving-old-IE-behind/
+*
+*/
+
+.ie body {
+	width: 640/@em;
+	margin: 0 auto;
+	font-size: (@font-size + 1) / @em;
+}
+
+.ie h1 {
+	.large();
+	margin: (48/42*1em) 0 (24/42*1em);
+}
+
+/* @media screen and (min-width: 640px) */
+@media screen and (min-width: 40em) {
+	
+	body {
+		/* Zoom baseline grid to 17/16 = 1.0625 */
+		font-size: (@font-size + 1) / @em;
+	}
+	
+	h1 {
+		.large();
+		margin: (48/42*1em) 0 (24/42*1em);
+	}
+	
+}
+
+
+/*
+*
+*  Eight-column grid active
+*  ----------------------------------------------------------------------
+*  Margin   | #  1     2     3     4     5     6     7     8   |   Margin
+*  5.55555% | %  12.5  25.0  37.5  50.0  62.5  75.0  87.5  100 | 5.55555%
+*	
+*
+*/
+
+/* @media screen and (min-width: 720px) */
+@media screen and (min-width: 45em) {
+
+/* 
+   start using the 8 column layout, 2 of which will be for extra padding, leaving 6 content-columns
+ */
+	
+	body {
+		/* Reset baseline grid to 16/16 = 1 */
+		font-size: (@font-size) / @em;
+	}
+	
+  /* #front-page-listing */
+  article .side-content {
+		  float: left;
+      width: (100% / 6) * 2;
+	}
+
+  /* 	#front-page-listing */
+  article section {
+		  float: left;
+		  width: (100% / 6) * 4;
+	}
+
+
+	#container {
+		margin: 0 @column*3;
+	} 
+
+	
+}
+
+
+/* @media screen and (min-width: 888px) */
+@media screen and (min-width: 55.5em) {
+	
+	body {
+		/* Zoom baseline grid to 17/16 = 1.0625 */
+		font-size: (@font-size + 1) / @em;
+	}
+
+	#container {
+		margin: 0 @column*3;
+	} 
+
+
+}
+
+
+/* @media screen and (min-width: 984px) */
+@media screen and (min-width: 61.5em) {
+	
+	body {
+		/* Reset baseline grid to 16/16 = 1.0 */
+		font-size: (@font-size) / @em; 
+	}
+
+
+}
+
+
+/* @media screen and (min-width: 1200px) */
+@media screen and (min-width: 75em) {
+	
+	body {
+		/* Zoom baseline grid to 17/16 = 1.0625 */
+		font-size: (@font-size + 1) / @em;
+	}
+	
+}
+
+
+/* @media screen and (min-width: 1392px) */
+@media screen and (min-width: 87em) {
+	
+	body {
+		/* Reset baseline grid to 16/16 = 1.0 */
+		font-size: (@font-size) / @em;
+	}
+}
+
+
+/* @media screen and (min-width: 1680px) */
+@media screen and (min-width: 105em) {
+	
+	body {
+		/* Zoom baseline grid to 17/16 = 1.0625 */
+		font-size: (@font-size + 1) / @em;
+	}
+	
+}
+
+
+/*
+*
+*  Sixteen-column grid active
+*  ----------------------------------------------------------------------------------------------------------------------
+*  Margin   | #  1     2     3     4     5     6     7     8     9     10    11    12    13    14    15    16  |   Margin
+*  5.55555% | %  6.25  12.5  18.75 25.0  31.25 37.5  43.75 50.0  56.25 62.5  68.75 75.0  81.25 87.5  93.75 100 | 5.55555%
+*	
+*
+*/
+
+/* @media screen and (min-width: 1872px) */
+@media screen and (min-width: 117em) {
+	  /* 
+	header, #twoway {
+		margin: 0 @column*1;
+	}
+	
+	header .wrapper {
+		width: 37.5%;
+		margin-left: 25%;
+	} */
+	
+	#twoway .wrapper {
+		width: 25%;
+	}
+	
+	#twoway .wrapper:first-child {
+		margin-left: 25%;
+	}
+	
+}
+
+
+/* @media screen and (min-width: 2080px) */
+@media screen and (min-width: 130em) {
+
+	body {
+		/* Zoom baseline grid to 18/16 = 1.125 */
+		font-size: (@font-size + 2) / @em;
+		max-width: 2560/em;
+	}
+	
+}

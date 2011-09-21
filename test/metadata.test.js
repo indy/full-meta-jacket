@@ -4,7 +4,7 @@ var utils = require('../lib/utils');
 
 // load metadata for one heirarchy and test multiple aspects from it
 var m = metadata.fullBuild('test/files/metadata');
-//utils.writeMeta('../traverse-1-meta.js', m);
+// utils.writeMeta('../traverse-1-meta.js', m);
 
 
 
@@ -14,7 +14,7 @@ exports['number of files in a folder'] = function() {
 }
 
 exports['number of subdirectories, ignoring layouts directory'] = function() {
-  assert.eql(3, m._directories.length);
+  assert.eql(4, m._directories.length);
 }
 
 exports['mark all directories correctly'] = function() {
@@ -52,4 +52,20 @@ exports['zonal metadata in a sub-directory'] = function() {
   assert.eql("A journal", m.journal._locals['journal-title']);
 }
 
-  // sub-directory posts
+exports['less files correctly marked as css'] = function() {
+  var style = m.css["style.css"]._locals;
+
+  // some metadata attributes related to css rendering
+  var expected = {"_filename": "/css/style.less",
+                  "_useMarkdown": false,
+                  "_outFileExt": "css",
+                  "_useLess": true,
+                  "publishedFilename": "style.css",
+                  "uri": "/css/style.css"}
+
+  for(var i in expected) {
+    assert.eql(expected[i], style[i]);
+  }
+}
+
+
