@@ -1,9 +1,17 @@
 {
-  "name": "murmur",
-  "version": "0.0.1",
+  "name": "full-meta-jacket",
+  "description": "Pseudo static site generator inspired by Jekyll",
+  "version": "0.0.5",
+  "author": "Inderjit Gill <email@indy.io>",
   "private": true,
   "dependencies": {
     "express": "2.3.12",
     "less": "1.1.4"
-  }
+  },
+  "devDependencies": {
+    "expresso": "0.8.1"
+  },
+  "keywords": ["static site"],
+  "repository": "git://github.com/indy/full-meta-jacket",
+  "main": "index"
 }
