@@ -48,23 +48,3 @@ exports['scopedBuild for simple content'] = function() {
   scoped = metadata.scopedBuild(m, '/simple/simple.png');
   assert.equal(scoped._directCopy, true);
 }
-
-exports['metadata structured around served content'] = function() {
-  assert.ok(m['index.html']);
-
-  // also check that posts are in the right place
-  assert.ok(m['journal']['a1.html']);
-  assert.ok(m['journal']['b2.html']);
-  assert.ok(m['journal']['c3.html']);
-}
-
-exports['posts metadata'] = function() {
-  var postsMeta = m['journal']['_locals']['posts'];
-
-  assert.equal(postsMeta.length, 3);
-}
-
-exports['local variables in file'] = function() {
-  assert.equal("murmur@example.com", m['index.html']._locals.email);
-}
-
