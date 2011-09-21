@@ -34,6 +34,9 @@ app.configure('production', function(){
 
 
 
+function errorMessage(e, path) {
+  return "Error trying to render " + path;
+}
 
 var folder = '../indy.io';
 
@@ -57,10 +60,16 @@ app.get('*', function(req, res){
     path += 'index.html';
   }
 
-  var headers = path.slice(-3) === 'css' ? {'Content-Type': 'text/css' } : {};  
+  var headers = {};
 
-  page.render(meta, path, function(content) {
-    res.send(content, headers);
+  page.render(meta, path, function(e, content) {
+    if(e) {
+      console.error(path);
+      res.send(errorMessage(e, path), headers);
+    } else {
+      headers = path.slice(-3) === 'css' ? {'Content-Type': 'text/css' } : {};
+      res.send(content, headers);
+    }
   });
 
 });
