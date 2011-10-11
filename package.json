@@ -8,9 +8,6 @@
     "express": "2.3.12",
     "less": "1.1.4"
   },
-  "devDependencies": {
-    "expresso": "0.8.1"
-  },
   "keywords": ["static site"],
   "repository": "git://github.com/indy/full-meta-jacket",
   "main": "index"
