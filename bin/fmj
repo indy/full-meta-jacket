@@ -7,14 +7,14 @@
 var fmj = require('../');
 var program = require('commander');
 
-// CLI
-
 program
   .version(fmj.version)
   .option('-s, --static', 'generate static site files')
   .option('-i, --input <string>', 'specify input directory')
   .option('-o, --output <string>', 'specify output directory')
   .option('-d, --debug', 'output some debug information')
+  .option('-p, --port <n>', 'port', parseInt)
+  .option('-m, --meta <string>', 'location to save meta file (for debugging)')
   .parse(process.argv);
 
 // Path
@@ -44,7 +44,13 @@ if(program.debug) {
 if(program.staticSite) {
   fmj.staticSite(program.inDir, program.outDir);
 } else {
-  fmj.liveSite(path);
+
+  var port = program.port ? program.port : 3000;
+
+  var options = {}
+  options.metaLocation = program.meta;
+
+  fmj.liveSite(path, port, options);
 }
 
 
