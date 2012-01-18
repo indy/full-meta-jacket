@@ -4,9 +4,8 @@
  * Module dependencies.
  */
 
-var fmj = require('../')
-  , program = require('commander')
-  , fs = require('fs');
+var fmj = require('../');
+var program = require('commander');
 
 // CLI
 
@@ -15,6 +14,7 @@ program
   .option('-s, --static', 'generate static site files')
   .option('-i, --input <string>', 'specify input directory')
   .option('-o, --output <string>', 'specify output directory')
+  .option('-d, --debug', 'output some debug information')
   .parse(process.argv);
 
 // Path
@@ -25,23 +25,26 @@ program.staticSite = false;
 if(program.static) { program.staticSite = true; }
 
 program.inDir = "site"
-if(program.input) { program.inDir = program.input; }
+if(program.input) { 
+  program.inDir = program.input;
+  path = program.inDir;
+}
 
 program.outDir = "public"
 if(program.output) { program.outDir = program.output; }
 
-console.log("hello");
-console.log("path is %j", path);
-console.log("static is %j", program.staticSite);
-console.log("input string is %j", program.inDir);
-console.log("output string is %j", program.outDir);
-console.log("goodbye");
 
+if(program.debug) {
+  console.log("path: %j", path);
+  console.log("static: %j", program.staticSite);
+  console.log("input string: %j", program.inDir);
+  console.log("output string: %j", program.outDir);
+}
 
 if(program.staticSite) {
   fmj.staticSite(program.inDir, program.outDir);
 } else {
-  fmj.liveSite(program.inDir);
+  fmj.liveSite(path);
 }
 
 
