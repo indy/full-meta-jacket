@@ -6,9 +6,11 @@
   "private": true,
   "dependencies": {
     "express": "2.3.12",
-    "less": "1.1.4"
+    "less": "1.1.4",
+    "commander": "0.5.1"
   },
   "keywords": ["static site"],
   "repository": "git://github.com/indy/full-meta-jacket",
-  "main": "index"
+  "main": "index",
+  "bin": { "fmj": "./bin/fmj" }
 }
