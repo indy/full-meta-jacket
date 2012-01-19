@@ -9,40 +9,15 @@ var program = require('commander');
 
 program
   .version(fmj.version)
-  .option('-s, --static', 'generate static site files')
-  .option('-i, --input <string>', 'specify input directory')
-  .option('-o, --output <string>', 'specify output directory')
-  .option('-d, --debug', 'output some debug information')
+  .option('-o, --output <string>', 'destination for static files')
   .option('-p, --port <n>', 'port', parseInt)
   .option('-m, --meta <string>', 'location to save meta file (for debugging)')
   .parse(process.argv);
 
-// Path
-
 var path = program.args.shift() || '.';
 
-program.staticSite = false;
-if(program.static) { program.staticSite = true; }
-
-program.inDir = "site"
-if(program.input) { 
-  program.inDir = program.input;
-  path = program.inDir;
-}
-
-program.outDir = "public"
-if(program.output) { program.outDir = program.output; }
-
-
-if(program.debug) {
-  console.log("path: %j", path);
-  console.log("static: %j", program.staticSite);
-  console.log("input string: %j", program.inDir);
-  console.log("output string: %j", program.outDir);
-}
-
-if(program.staticSite) {
-  fmj.staticSite(program.inDir, program.outDir);
+if(program.output) {
+  fmj.staticSite(path, program.output);
 } else {
 
   var port = program.port ? program.port : 3000;
