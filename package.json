@@ -1,16 +1,16 @@
 {
   "name": "full-meta-jacket",
-  "description": "Pseudo static site generator inspired by Jekyll",
-  "version": "0.0.5",
+  "description": "A dynamic/static site generator",
+  "version": "0.0.6",
   "author": "Inderjit Gill <email@indy.io>",
-  "private": true,
   "dependencies": {
     "express": "2.3.12",
     "less": "1.1.4",
     "commander": "0.5.1"
   },
-  "keywords": ["static site"],
+  "keywords": ["website", "blog"],
   "repository": "git://github.com/indy/full-meta-jacket",
   "main": "index",
-  "bin": { "fmj": "./bin/fmj" }
+  "bin": { "fmj": "./bin/fmj" },
+  "license": "MIT"
 }
