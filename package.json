@@ -4,7 +4,6 @@
   "version": "0.0.6",
   "author": "Inderjit Gill <email@indy.io>",
   "dependencies": {
-    "express": "2.5.6",
     "less": "1.2.0",
     "commander": "0.5.1"
   },
