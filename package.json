@@ -1,7 +1,7 @@
 {
   "name": "full-meta-jacket",
   "description": "A dynamic/static site generator",
-  "version": "0.0.6",
+  "version": "0.1.0",
   "author": "Inderjit Gill <email@indy.io>",
   "dependencies": {
     "less": "1.2.0",
