@@ -1,7 +1,4 @@
-<a name="README">[Full Meta Jacket](https://github.com/indy/full-meta-jacket)</a>
-=======
-
-Easily generate static websites with Full Meta Jacket
+# Easily generate static websites with <a name="README">[Full Meta Jacket](https://github.com/indy/full-meta-jacket)</a>
 
 1. Write your content with [Imbue](https://github.com/indy/imbue), a Markdown based templating library.
 2. Generate the static site into a ```public``` folder with: 
