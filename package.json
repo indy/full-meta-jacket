@@ -1,14 +1,14 @@
 {
   "name": "full-meta-jacket",
-  "description": "A dynamic/static site generator",
-  "version": "0.1.1",
+  "description": "The 42nd best static site generator for node.js",
+  "version": "0.1.2",
   "author": "Inderjit Gill <email@indy.io>",
   "dependencies": {
     "imbue": "0.0.3",
     "less": "1.2.0",
     "commander": "0.5.1"
   },
-  "keywords": ["website", "blog"],
+  "keywords": ["website", "blog", "static", "site", "generator"],
   "repository": "git://github.com/indy/full-meta-jacket",
   "main": "index",
   "bin": { "fmj": "./bin/fmj" },
