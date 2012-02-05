@@ -2,12 +2,6 @@ EXPRESSO ?= `which expresso`
 DOCCO ?= `which docco`
 WATCHR ?= `which watchr`
 
-server:
-	node app.js
-
-site:
-	node aux/buildSite.js
-
 test:
 	@@if test ! -z ${EXPRESSO}; then \
 		expresso test/*.test.js; \
