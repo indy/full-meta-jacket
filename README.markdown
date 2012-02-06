@@ -1,6 +1,12 @@
-# Easily generate static websites with <a name="README">[Full Meta Jacket](https://github.com/indy/full-meta-jacket)</a>
+# [Full Meta Jacket](https://github.com/indy/full-meta-jacket): the static website generator
 
-1. Write your content with [Imbue](https://github.com/indy/imbue), a Markdown based templating library.
+## Installation
+
+```npm install full-meta-jacket -g```
+
+## Getting Started
+
+1. Write your markup in [Imbue](https://github.com/indy/imbue), a Markdown based templating library.
 2. Generate the static site into a ```public``` folder with: 
 
     ```fmj source-folder -o public```
