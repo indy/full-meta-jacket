@@ -7,8 +7,7 @@
     "imbue": "0.0.4",
     "less": "1.2.0",
     "commander": "0.5.1",
-    "connect": "2.0.0",
-    "mime": "1.2.5"
+    "connect": "2.0.0"
   },
   "keywords": ["website", "blog", "static", "site", "generator"],
   "repository": "git://github.com/indy/full-meta-jacket",
