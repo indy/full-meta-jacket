@@ -57,11 +57,13 @@ exports['less files correctly marked as css'] = function() {
 
   // some metadata attributes related to css rendering
   var expected = {"_filename": "/css/style.less",
-                  "_useMarkdown": false,
+                  "_useImbue": false,
                   "_outFileExt": "css",
                   "_useLess": true,
                   "publishedFilename": "style.css",
-                  "uri": "/css/style.css"}
+                  "uri": "/css/style.css",
+                  "_directCopy": false,
+                  "title": "style"}
 
   for(var i in expected) {
     assert.eql(expected[i], style[i]);

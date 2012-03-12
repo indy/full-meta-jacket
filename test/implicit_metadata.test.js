@@ -7,11 +7,6 @@ var filenameA = '2020-11-16-future-post.imd';
 var filenameB = 'another-post.html';
 var filenameC = 'another-post.imd';
 
-exports['useMarkdown'] = function() {
-  assert.eql(m._fn.useMarkdown(filenameA), true);
-  assert.eql(m._fn.useMarkdown(filenameB), false);
-  assert.eql(m._fn.useMarkdown(filenameC), true);
-}
 
 exports['hadDateInFilename'] = function() {
   assert.eql(m._fn.hasDateInFilename(filenameA), true);
@@ -34,16 +29,17 @@ exports['fullUri'] = function() {
 
 exports['derive metadata from filenames'] = function() {
 
-  var expectedA = {_useMarkdown : true,
-                  _outFileExt : 'html',
-                  _filename : '/journal/2020-11-16-future-post.imd',
-                  date : new Date(2020, 10, 16), // 16th November 2020
-                  title: 'future post',
-                  uri: '/journal/2020-11-16-future-post.html',
-                  publishedFilename: '2020-11-16-future-post.html'
-                 };
+  var expectedA = { _useImbue: true,
+                    _useMarkdown : true,
+                    _outFileExt : 'html',
+                    _filename : '/journal/2020-11-16-future-post.imd',
+                    date : new Date(2020, 10, 16), // 16th November 2020
+                    title: 'future post',
+                    uri: '/journal/2020-11-16-future-post.html',
+                    publishedFilename: '2020-11-16-future-post.html'
+                  };
 
-  var expectedB = {_useMarkdown : false,
+  var expectedB = {_useImbue: true,
                   _outFileExt : 'html',
                   _filename : '/journal/another-post.html',
                   title: 'another post',
