@@ -1,0 +1,8 @@
+<entry>
+  <title>{{= title }}</title>
+  <link href="http://indy.io/{{= href }}" />
+  <link rel="alternate" type="text/html" href="http://indy.io/{{= href }}.html"/>
+  <id>http://indy.io/{{= href }}/</id>
+  <updated>{{= date}}</updated>
+  <summary>{{= copy }}</summary>
+</entry>
