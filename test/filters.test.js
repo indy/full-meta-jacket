@@ -30,3 +30,14 @@ exports['list with'] = function() {
 exports['paste'] = function() {
   filterTest("paste.imd");
 }
+
+exports['setup should work in a minimal folder'] = function() {
+
+  // use a non-existant folder since this won't contain 
+  // either a _partials subfolder nor a _filters.js file
+  var folder = "test/files/non-existant-folder";
+
+  assert.doesNotThrow(function() {
+    filters.setup(folder);
+  });
+}
