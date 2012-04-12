@@ -1,7 +1,7 @@
 {
   "name": "full-meta-jacket",
   "description": "The 42nd best static site generator for node.js",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "author": "Inderjit Gill <email@indy.io>",
   "dependencies": {
     "imbue": "0.0.5",
