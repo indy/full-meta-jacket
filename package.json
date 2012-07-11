@@ -13,5 +13,8 @@
   "repository": "git://github.com/indy/full-meta-jacket",
   "main": "index",
   "bin": { "fmj": "./bin/fmj" },
-  "license": "MIT"
+  "license": "MIT",
+  "engine": {
+    "node": ">=0.8.2"
+  }
 }
