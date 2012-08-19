@@ -6,8 +6,6 @@ var utils = require('../lib/utils');
 var m = metadata.fullBuild('test/files/metadata');
 // utils.writeMeta('../traverse-1-meta.js', m);
 
-
-
 exports['number of files in a folder'] = function() {
   assert.eql(1, m._files.length);
   assert.eql(2, m.simple._files.length);
@@ -53,7 +51,7 @@ exports['zonal metadata in a sub-directory'] = function() {
 }
 
 exports['less files correctly marked as css'] = function() {
-  var style = m.css["style.css"]._locals;
+  var lessCSS = m.css["style.css"]._locals;
 
   // some metadata attributes related to css rendering
   var expected = {"_filename": "/css/style.less",
@@ -66,7 +64,24 @@ exports['less files correctly marked as css'] = function() {
                   "title": "style"}
 
   for(var i in expected) {
-    assert.eql(expected[i], style[i]);
+    assert.eql(expected[i], lessCSS[i]);
+  }
+}
+
+exports['stylus files correctly marked as css'] = function() {
+  var stylusCSS = m.css["design.css"]._locals;
+
+  // some metadata attributes related to css rendering
+  var expected = {"_filename": "/css/design.stylus",
+                  "_useImbue": false,
+                  "_outFileExt": "css",
+                  "_useStylus": true,
+                  "publishedFilename": "design.css",
+                  "uri": "/css/design.css",
+                  "_directCopy": false}
+
+  for(var i in expected) {
+    assert.eql(expected[i], stylusCSS[i]);
   }
 }
 
