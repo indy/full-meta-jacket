@@ -1,0 +1,7 @@
+---
+"layout": "listing-page",
+"title": "Journal"
+---
+
+{{=: posts | listWith:'post' }}
+

@@ -1,0 +1,52 @@
+---
+---
+<!doctype html>
+<!-- generated with Full Meta Jacket (http://github.com/indy/full-meta-jacket) -->
+
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7 ]> <html class="no-js ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]>    <html class="no-js ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]>    <html class="no-js ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+
+  <title>{{= title }}</title>
+  <meta name="description" content="{{= description }}">
+  <meta name="author" content="{{= author }}">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="stylesheets/stylesheet.css">
+</head>
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="{{= project_url }}">Fork Me on GitHub</a>
+
+          <h1 id="project_title">{{= project_name }}</h1>
+          <h2 id="project_tagline">A static site generator</h2>
+
+          <section id="downloads">
+            <a class="zip_download_link" href="{{= project_url }}/zipball/master">Download this project as a .zip file</a>
+            <a class="tar_download_link" href="{{= project_url }}/tarball/master">Download this project as a tar.gz file</a>
+          </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        {{= content }}
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">{{= project_name }} maintained by <a href="https://github.com/indy">indy</a></p>
+      </footer>
+    </div>
+
+</body>
+</html>

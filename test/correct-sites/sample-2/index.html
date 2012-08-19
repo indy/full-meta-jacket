@@ -1,0 +1,84 @@
+<!doctype html>
+<!-- generated with Full Meta Jacket (http://github.com/indy/full-meta-jacket) -->
+
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7 ]> <html class="no-js ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]>    <html class="no-js ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]>    <html class="no-js ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+
+  <title>Journal</title>
+  <meta name="description" content="A full-meta-jacket example">
+  <meta name="author" content="Inderjit Gill">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="stylesheets/styles.css">
+  <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+  <script src="js/scale.fix.js"></script>
+
+</head>
+  <body>
+    <div class="wrapper">
+      <header>
+  <h1>Journal</h1>
+</header>
+<section>
+  <ul><li><a href="/2012-05-15-third-post.html">Third Post</a></li><li><a href="/2012-05-08-the-second-post.html">Another Post</a></li><li><a href="/2012-05-01-my-first-post.html">My First Post</a></li></ul>
+
+<h2>Description of the second Full Meta Jacket sample</h2>
+
+<p>This second example of Full Meta Jacket expands upon the first by having</p>
+
+<ol>
+<li>a set of posts which are listed above.</li>
+<li>snippets of code in a <code>_partials</code> folder</li>
+<li>nested layouts</li>
+</ol>
+
+<h3>1. A set of posts</h3>
+
+<p>The list of posts to display at the top of this page is taken from the contents of the <code>_posts</code> directory. The files in any <code>_posts</code> directory are treated differently from normal files in the following ways:</p>
+
+<ol>
+<li><p>The publish date of a post is taken from the filename and the title is assumed to be the remaining text. e.g. when the file <code>2012-06-26-monkeys-in-space.imd</code> is processed by Full Meta Jacket, amongst it's set of variables there will be a "date" value of "2012-06-26" and a "title" of "monkeys in space". </p></li>
+<li><p>Any file inside <code>_posts</code> that doesn't begin with a date is assumed to be a draft copy and won't be converted into a static file (for example see <code>_posts/draft-potential-fourth-post.imd</code> which doesn't appear in the final output)</p></li>
+<li><p>The contents of <code>_posts</code> are "hoisted" up into the parent directory. e.g. a file such as <code>./foo/_posts/2012-06-26-blog.imd</code> would result in the static file <code>./foo/2012-06-26-blog.html</code></p></li>
+<li><p>All metadata from the files in <code>_posts</code> is concatenated into an array and assigned to a variable called <code>posts</code></p></li>
+</ol>
+
+<h3>2. Snippets of code</h3>
+
+<p>Looking at the original <code>index.imd</code> file for this html page you can see that the list of posts at the top were generated with the line:</p>
+
+<pre><code>{ {=: posts | listWith:'post' }}
+</code></pre>
+
+<!-- note  the above line should be:
+
+    <ul><li><a href="/2012-05-15-third-post.html">Third Post</a></li><li><a href="/2012-05-08-the-second-post.html">Another Post</a></li><li><a href="/2012-05-01-my-first-post.html">My First Post</a></li></ul>
+
+
+-->
+
+<p>This takes the <code>posts</code> list and passes it into the <code>listWith</code> function along with another variable called <code>post</code> which represents the partial file that should be used to render each element of <code>posts</code> . You can see the  <code>post</code> code in <code>_partials/post.html</code>:</p>
+
+<pre><code>&lt;li&gt;&lt;a href="{{= uri }}"&gt;{{= title }}&lt;/a&gt;&lt;/li&gt;
+</code></pre>
+
+<h3>3. Nested layouts</h3>
+
+<p>This index page uses a layout called <code>listing-page</code> and each post uses a layout called <code>post</code> . Both files are located in the <code>_layouts</code> folder, if you view them in a text editor you can see that they each have a "layout" header value of <code>default</code>. This nested structure is a good way of sharing common templating code throughout a site.</p>
+</section>
+    </div>
+    <footer>
+
+Modernist theme by <a href="https://github.com/orderedlist">Steve Smith</a>
+which I stole from <a href="http://zachholman.com/spark/">http://zachholman.com/spark/</a>
+(via the Github blog post: <a href="https://github.com/blog/1081-instantly-beautiful-project-pages">instantly beautiful project pages</a>)
+
+    </footer>
+    <!--[if !IE]><script>fixScale(document);</script><!--<![endif]-->
+</body>
+</html>

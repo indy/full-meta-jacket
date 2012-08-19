@@ -31,4 +31,13 @@ function compareAllGeneratedFiles(folder) {
 exports['check basic-stylus'] = function() {
   compareAllGeneratedFiles('basic-stylus');
 }
+exports['check sample-1'] = function() {
+  compareAllGeneratedFiles('sample-1');
+}
+exports['check sample-2'] = function() {
+  compareAllGeneratedFiles('sample-2');
+}
+exports['check sample-3'] = function() {
+  compareAllGeneratedFiles('sample-3');
+}
 
