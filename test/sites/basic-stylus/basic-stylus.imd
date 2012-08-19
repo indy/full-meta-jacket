@@ -1,0 +1,7 @@
+---
+"layout": "default"
+---
+
+## Stylus test site
+
+A site consisting of a single [imbue](https://github.com/indy/imbue) file and CSS specified with [Stylus](http://learnboost.github.com/stylus/)
