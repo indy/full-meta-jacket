@@ -17,12 +17,13 @@
 ## Features
 
 * A 'development' mode which fires up a local webserver and enables you see the result of modifying [Imbue](https://github.com/indy/imbue) files
-* Write your CSS in [Less](http://lesscss.org)
+* Write your CSS in [Less](http://lesscss.org) and [Stylus](http://learnboost.github.com/stylus/)
 * Define hierarchical layouts as well as custom partials
 
 ## Example Sites
 
 * [indy.io](http://indy.io)
+* [fmj-examples](https://github.com/indy/fmj-examples)
 
 ## License 
 
