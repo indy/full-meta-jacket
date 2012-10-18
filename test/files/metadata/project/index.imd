@@ -1,4 +1,7 @@
 ---
+"layout": "default",
+"javascripts": ["/js/fake-a.js",
+                "/js/fake-b.js"]
 ---
 
 #hello world

@@ -12,7 +12,7 @@ exports['number of files in a folder'] = function() {
 }
 
 exports['number of subdirectories, ignoring layouts directory'] = function() {
-  assert.eql(4, m._directories.length);
+  assert.eql(5, m._directories.length);
 }
 
 exports['mark all directories correctly'] = function() {

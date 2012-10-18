@@ -5,6 +5,18 @@ var utils = require('../lib/utils');
 // load metadata for one heirarchy and test multiple aspects from it
 var m = metadata.fullBuild('test/files/metadata');
 
+
+
+exports['scopedBuild project/index.html'] = function() {
+  metadata.scopedBuild(m, 'project/index.html', function(e, scoped) {
+
+    utils.writeMeta('../project-1-meta.js', scoped);
+
+    assert.ifError(e);
+    assert.equal(scoped.javascripts.length, 2);
+  });
+}
+
 exports['scopedBuild index.html'] = function() {
   metadata.scopedBuild(m, '/index.html', function(e, scoped) {
     assert.ifError(e);

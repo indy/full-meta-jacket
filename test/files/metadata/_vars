@@ -1,4 +1,9 @@
 ---
 "siteName": "FakeSite",
-"book-title": "Catch-22"
+"book-title": "Catch-22",
+"javascripts": ["/js/fake-1.js",
+                "/js/fake-2.js",
+                "/js/fake-3.js",
+                "/js/fake-4.js",
+                "/js/fake-5.js"]
 ---
