@@ -1,3 +1,4 @@
+[![build status](https://secure.travis-ci.org/indy/full-meta-jacket.png)](http://travis-ci.org/indy/full-meta-jacket)
 # [Full Meta Jacket](https://github.com/indy/full-meta-jacket): the static website generator
 
 ## Installation
