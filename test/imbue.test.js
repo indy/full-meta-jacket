@@ -36,22 +36,23 @@ function compare(test, filename, data) {
 exports['imbue.test.js'] = {
 
   "a simple imbue file with no header information": function(test) {
-    test.expect(1)
+    test.expect(1);
     compare(test, "jaded1.imd", {});
     test.done();
   },
 
   "an imbue file with a layout" : function(test) {
-    test.expect(1)
+    test.expect(2);
     compare(test, "with-layout.imd", {
       // set the path so that it"s treated as though it"s in the same
       // directory as the processed jade files
       _jade_filename: "test/files/imbue/jade/with-layout.imd"});
+    test.equal(1, 1);
     test.done();
   },
 
   "an imbue file with a nested layout": function(test) {
-    test.expect(1)
+    test.expect(1);
     compare(test, "with-nested-layout.imd", {
       _jade_filename: "test/files/imbue/jade/with-nested-layout.imd"
     });
