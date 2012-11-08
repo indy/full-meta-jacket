@@ -1,0 +1,8 @@
+---
+"template": "default"
+---
+header
+  h2 #{title}
+  time someTimeHere
+section
+  block post-content

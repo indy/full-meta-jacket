@@ -1,0 +1,26 @@
+---
+"javascripts": ["libs/jquery-1.7.2.min",
+                "libs/waypoints.min",
+                "libs/jquery.fracs",
+                "libs/jquery.outline",
+                "main"]
+---
+!!!
+// generated with Full Meta Jacket (http://github.com/indy/full-meta-jacket)
+html.no-js(lang="en")
+  head
+    meta(charset="utf-8")
+    title #{title}
+    meta(name="description", content="#{description}")
+    meta(name="author", content="#{author}")
+    TODO-has-atom-feed
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    link(rel="stylesheet", href="/styles/full-style.css?v=2")
+    script(src="/scripts/libs/modernizr-1.7.min.js")
+    include openid
+  body
+    div#container
+      block default-content
+    for js in javascripts
+      include javascript-declaration
+    include analytics

@@ -1,0 +1,5 @@
+extends nested-layout-1
+
+block nested-layout-1-content
+  h1 hello world
+  block nested-layout-2-content
