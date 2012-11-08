@@ -9,11 +9,11 @@ var m = metadata.fullBuild('test/files/metadata');
 exports['number of files in a folder'] = function() {
   assert.eql(1, m._files.length);
   assert.eql(2, m.simple._files.length);
-}
+};
 
 exports['number of subdirectories, ignoring layouts directory'] = function() {
   assert.eql(5, m._directories.length);
-}
+};
 
 exports['mark all directories correctly'] = function() {
   assert.ok(m._isDirectory);
@@ -22,7 +22,7 @@ exports['mark all directories correctly'] = function() {
 
   assert.ok(!m['index.html']._isDirectory);
   assert.ok(!m.journal['a1.html']._isDirectory);
-}
+};
 
 exports['implicit file metadata'] = function() {
   var j = m.journal;
@@ -35,20 +35,20 @@ exports['implicit file metadata'] = function() {
   assert.eql("/journal/a1.html", j['a1.html']._locals.uri);
   assert.eql("/journal/b2.html", j['b2.html']._locals.uri);
   assert.eql("/journal/c3.html", j['c3.html']._locals.uri);
-}
+};
 
 exports['explicit file metadata'] = function() {
   var j = m.journal;
   assert.eql(3, j['a1.html']._locals.names.length);
-}
+};
 
 exports['top-level zonal metadata'] = function() {
   assert.eql("Catch-22", m._locals['book-title']);
-}
+};
 
 exports['zonal metadata in a sub-directory'] = function() {
   assert.eql("A journal", m.journal._locals['journal-title']);
-}
+};
 
 exports['less files correctly marked as css'] = function() {
   var lessCSS = m.css["style.css"]._locals;
@@ -61,12 +61,12 @@ exports['less files correctly marked as css'] = function() {
                   "publishedFilename": "style.css",
                   "uri": "/css/style.css",
                   "_directCopy": false,
-                  "title": "style"}
+                  "title": "style"};
 
   for(var i in expected) {
     assert.eql(expected[i], lessCSS[i]);
   }
-}
+};
 
 exports['stylus files correctly marked as css'] = function() {
   var stylusCSS = m.css["design.css"]._locals;
@@ -78,23 +78,23 @@ exports['stylus files correctly marked as css'] = function() {
                   "_useStylus": true,
                   "publishedFilename": "design.css",
                   "uri": "/css/design.css",
-                  "_directCopy": false}
+                  "_directCopy": false};
 
   for(var i in expected) {
     assert.eql(expected[i], stylusCSS[i]);
   }
-}
+};
 
 
 exports['posts metadata'] = function() {
   var postsMeta = m['journal']['_locals']['posts'];
 
   assert.equal(postsMeta.length, 3);
-}
+};
 
 exports['local variables in file'] = function() {
   assert.equal("murmur@example.com", m['index.html']._locals.email);
-}
+};
 
 
 exports['metadata structured around served content'] = function() {
@@ -104,5 +104,5 @@ exports['metadata structured around served content'] = function() {
   assert.ok(m['journal']['a1.html']);
   assert.ok(m['journal']['b2.html']);
   assert.ok(m['journal']['c3.html']);
-}
+};
 

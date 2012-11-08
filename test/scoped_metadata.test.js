@@ -13,7 +13,7 @@ exports['scopedBuild project/index.html'] = function() {
     assert.ifError(e);
     assert.equal(scoped.javascripts.length, 2);
   });
-}
+};
 
 exports['scopedBuild index.html'] = function() {
   metadata.scopedBuild(m, '/index.html', function(e, scoped) {
@@ -22,7 +22,7 @@ exports['scopedBuild index.html'] = function() {
     assert.equal(scoped._filename, "/index.imd");
     assert.equal(scoped.siteName, "FakeSite");
   });
-}
+};
 
 exports['scopedBuild journal/a1.html'] = function() {
   metadata.scopedBuild(m, '/journal/a1.html', function(e, scoped) {
@@ -30,14 +30,14 @@ exports['scopedBuild journal/a1.html'] = function() {
     assert.equal(scoped.posts.length, 3);
     assert.equal(scoped['journal-title'], "A journal");
 
-    assert.eql(scoped["date"], new Date(2011, 07, 16));
+    assert.eql(scoped["date"], new Date(2011, 7, 16));
     assert.equal(scoped._filename, "/journal/_posts/a1.imd");
     assert.equal(scoped["publishedFilename"], "a1.html");
     assert.equal(scoped.names.length, 3);
 
     assert.equal(scoped.siteName, "FakeSite");
   });
-}
+};
 
 exports['scopedBuild journal/c3.html'] = function() {
   metadata.scopedBuild(m, '/journal/c3.html', function(e, scoped) {
@@ -53,7 +53,7 @@ exports['scopedBuild journal/c3.html'] = function() {
 
     assert.equal(scoped.siteName, "FakeSite");
   });
-}
+};
 
 exports['scopedBuild for simple content'] = function() {
   metadata.scopedBuild(m, '/simple/simple.html', function(e, scoped) {
@@ -66,7 +66,7 @@ exports['scopedBuild for simple content'] = function() {
     assert.equal(scoped._directCopy, true);
   });
 
-}
+};
 
 exports['building scoped metadata'] = function() {
 
@@ -83,5 +83,5 @@ exports['building scoped metadata'] = function() {
     assert.notEqual(e, null);
   });
 
-}
+};
 

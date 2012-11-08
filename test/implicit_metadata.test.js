@@ -12,19 +12,19 @@ exports['hadDateInFilename'] = function() {
   assert.eql(m._fn.hasDateInFilename(filenameA), true);
   assert.eql(m._fn.hasDateInFilename(filenameB), false);
   assert.eql(m._fn.hasDateInFilename(filenameC), false);
-}
+};
 
 
 exports['sanitiseTitle'] = function() {
   assert.eql(m._fn.sanitiseTitle('hello-world'), 'hello world');
   assert.eql(m._fn.sanitiseTitle('hello-world.txt'), 'hello world');
   assert.eql(m._fn.sanitiseTitle('hello-hip--hop.txt'), 'hello hip-hop');
-}
+};
 
 exports['fullUri'] = function() {
   assert.eql(m._fn.fullUri('/foo', 'bar.html'), '/foo/bar.html');
   assert.eql(m._fn.fullUri('/foo/_posts', 'bar.html'), '/foo/bar.html');
-}
+};
 
 
 exports['derive metadata from filenames'] = function() {
@@ -52,5 +52,5 @@ exports['derive metadata from filenames'] = function() {
 
   assert.deepEqual(expectedA, actualA);
   assert.deepEqual(expectedB, actualB);
-}
+};
 

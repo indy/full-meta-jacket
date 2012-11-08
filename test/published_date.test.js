@@ -23,4 +23,4 @@ exports['published date'] = function() {
 //    assert.equal(published[i].published_date, expectedDates[i]);
 //  }
 
-}
+};
