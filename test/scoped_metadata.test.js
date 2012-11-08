@@ -5,83 +5,96 @@ var utils = require('../lib/utils');
 // load metadata for one heirarchy and test multiple aspects from it
 var m = metadata.fullBuild('test/files/metadata');
 
+exports['scoped_metadata.test.js'] = {
 
+  'scopedBuild project/index.html' : function(test) {
+    test.expect(2);
+    metadata.scopedBuild(m, 'project/index.html', function(e, scoped) {
+      //    utils.writeMeta('../project-1-meta.js', scoped);
+      test.ifError(e);
+      test.equal(scoped.javascripts.length, 2);
+    });
+    test.done();
+  },
 
-exports['scopedBuild project/index.html'] = function() {
-  metadata.scopedBuild(m, 'project/index.html', function(e, scoped) {
-//    utils.writeMeta('../project-1-meta.js', scoped);
-    assert.ifError(e);
-    assert.equal(scoped.javascripts.length, 2);
-  });
-};
+  'scopedBuild index.html' : function(test) {
+    test.expect(4);
+    metadata.scopedBuild(m, '/index.html', function(e, scoped) {
+      test.ifError(e);
+      test.equal(scoped.email, "murmur@example.com");
+      test.equal(scoped._filename, "/index.imd");
+      test.equal(scoped.siteName, "FakeSite");
+    });
+    test.done();
+  },
 
-exports['scopedBuild index.html'] = function() {
-  metadata.scopedBuild(m, '/index.html', function(e, scoped) {
-    assert.ifError(e);
-    assert.equal(scoped.email, "murmur@example.com");
-    assert.equal(scoped._filename, "/index.imd");
-    assert.equal(scoped.siteName, "FakeSite");
-  });
-};
+  'scopedBuild journal/a1.html' : function(test) {
+    test.expect(8);
+    metadata.scopedBuild(m, '/journal/a1.html', function(e, scoped) {
+      test.ifError(e);
+      test.equal(scoped.posts.length, 3);
+      test.equal(scoped['journal-title'], "A journal");
 
-exports['scopedBuild journal/a1.html'] = function() {
-  metadata.scopedBuild(m, '/journal/a1.html', function(e, scoped) {
-    assert.ifError(e);
-    assert.equal(scoped.posts.length, 3);
-    assert.equal(scoped['journal-title'], "A journal");
+      test.deepEqual(scoped["date"], new Date(2011, 7, 16));
+      test.equal(scoped._filename, "/journal/_posts/a1.imd");
+      test.equal(scoped["publishedFilename"], "a1.html");
+      test.equal(scoped.names.length, 3);
 
-    assert.eql(scoped["date"], new Date(2011, 7, 16));
-    assert.equal(scoped._filename, "/journal/_posts/a1.imd");
-    assert.equal(scoped["publishedFilename"], "a1.html");
-    assert.equal(scoped.names.length, 3);
+      test.equal(scoped.siteName, "FakeSite");
+    });
+    test.done();
+  },
 
-    assert.equal(scoped.siteName, "FakeSite");
-  });
-};
+  'scopedBuild journal/c3.html' : function(test) {
+    test.expect(8);
+    metadata.scopedBuild(m, '/journal/c3.html', function(e, scoped) {
+      test.ifError(e);
+      test.equal(scoped.posts.length, 3);
+      // shadowing the journal scope variable with a c3 specific one
+      test.equal(scoped['journal-title'], "custom title");
 
-exports['scopedBuild journal/c3.html'] = function() {
-  metadata.scopedBuild(m, '/journal/c3.html', function(e, scoped) {
-    assert.ifError(e);
-    assert.equal(scoped.posts.length, 3);
-    // shadowing the journal scope variable with a c3 specific one
-    assert.equal(scoped['journal-title'], "custom title");
+      test.deepEqual(scoped["date"], new Date(2011, 9, 16));
+      test.equal(scoped._filename, "/journal/_posts/c3.imd");
+      test.equal(scoped["publishedFilename"], "c3.html");
+      test.equal(scoped.names.length, 3);
 
-    assert.eql(scoped["date"], new Date(2011, 9, 16));
-    assert.equal(scoped._filename, "/journal/_posts/c3.imd");
-    assert.equal(scoped["publishedFilename"], "c3.html");
-    assert.equal(scoped.names.length, 3);
+      test.equal(scoped.siteName, "FakeSite");
+    });
+    test.done();
+  },
 
-    assert.equal(scoped.siteName, "FakeSite");
-  });
-};
+  'scopedBuild for simple content' : function(test) {
+    test.expect(4);
+    metadata.scopedBuild(m, '/simple/simple.html', function(e, scoped) {
+      test.ifError(e);
+      test.equal(scoped._filename, '/simple/simple.html');
+    });
 
-exports['scopedBuild for simple content'] = function() {
-  metadata.scopedBuild(m, '/simple/simple.html', function(e, scoped) {
-    assert.ifError(e);
-    assert.equal(scoped._filename, '/simple/simple.html');
-  });
+    metadata.scopedBuild(m, '/simple/simple.png', function(e, scoped) {
+      test.ifError(e);
+      test.equal(scoped._directCopy, true);
+    });
+    test.done();
+  },
 
-  metadata.scopedBuild(m, '/simple/simple.png', function(e, scoped) {
-    assert.ifError(e);
-    assert.equal(scoped._directCopy, true);
-  });
+  'building scoped metadata' : function(test) {
 
-};
+    var lm = {a: { _locals: {z: 1},
+                   b: { _locals: {y: 2}}}};
 
-exports['building scoped metadata'] = function() {
+    test.expect(4);
 
-  var lm = {a: { _locals: {z: 1},
-                 b: { _locals: {y: 2}}}};
+    metadata.scopedBuild(lm, '/a/b/', function(e, scoped) {
+      test.ifError(e);
+      test.deepEqual(scoped.z, 1);
+      test.deepEqual(scoped.y, 2);
+    });
 
-  metadata.scopedBuild(lm, '/a/b/', function(e, scoped) {
-    assert.ifError(e);
-    assert.eql(scoped.z, 1);
-    assert.eql(scoped.y, 2);
-  });
+    metadata.scopedBuild(lm, '/a/whoops/b/', function(e, scoped) {
+      test.notEqual(e, null);
+    });
 
-  metadata.scopedBuild(lm, '/a/whoops/b/', function(e, scoped) {
-    assert.notEqual(e, null);
-  });
-
+    test.done();
+  }
 };
 
