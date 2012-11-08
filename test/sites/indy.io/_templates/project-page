@@ -1,0 +1,12 @@
+---
+"layout": "default"
+---
+header
+  h1#site-title
+    a(href='/') #{sitename}
+  h2 #{title}
+  time(pubdate='pubdate') TODO-print-time-here
+  TODO-waterline
+section#main-content
+  article.wrapper
+    block project-page-content

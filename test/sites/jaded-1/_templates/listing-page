@@ -1,0 +1,7 @@
+---
+"layout": "default"
+---
+header
+  h1 #{title}
+section
+  block listing-page-content

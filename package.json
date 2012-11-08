@@ -1,14 +1,15 @@
 {
   "name": "full-meta-jacket",
   "description": "The 42nd best static site generator for node.js",
-  "version": "0.2.7",
+  "version": "0.3.0",
   "author": "Inderjit Gill <email@indy.io>",
   "dependencies": {
-    "imbue": "0.0.6",
+    "markdown": "0.4.0",
+    "jade": "0.27.6",
+    "stylus": "0.29.0",
     "less": "1.2.0",
     "commander": "1.0.1",
     "connect": "2.4.3",
-    "stylus": "0.29.0",
     "temp": "0.4.0"
   },
   "keywords": ["website", "blog", "static", "site", "generator"],

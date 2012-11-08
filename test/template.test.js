@@ -1,10 +1,10 @@
 var assert = require('assert');
-var layout = require('../lib/layout');
+var template = require('../lib/template');
 var utils = require('../lib/utils');
 var fs = require('fs');
 
 // load layouts once, test multiple aspects
-var layouts = layout.build('test/files/layout');
+var layouts = template.build('test/files/template');
 
 exports['read all layouts'] = function() {
   assert.equal(utils.objectSize(layouts), 3);
