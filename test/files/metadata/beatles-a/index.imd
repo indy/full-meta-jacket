@@ -1,0 +1,8 @@
+---
+"beatle": "ringo",
+"template": "default",
+"javascripts": ["/js/from-header-a.js",
+                "/js/from-header-b.js"]
+---
+
+#hello world

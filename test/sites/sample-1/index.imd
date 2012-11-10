@@ -1,5 +1,5 @@
 ---
-"layout": "default"
+"template": "default"
 ---
 
 ### Welcome to the first sample for [Full Meta Jacket](https://github.com/indy/full-meta-jacket)
@@ -17,7 +17,7 @@ So the 3 relevent files in this example are:
 
 index.imd's header contains a single key-value pair which specifies the template to use:
 
-    "layout": "default"
+    "template": "default"
 
 (The header information always appears at the top of a file it begins and ends with three hyphens and the data itself is in JSON format)
 

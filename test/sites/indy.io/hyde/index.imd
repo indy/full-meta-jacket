@@ -1,5 +1,5 @@
 ---
-"layout": "project-page",
+"template": "project-page",
 "title": "Hyde"
 ---
 Hyde is a fork of the [Jekyll](http://github.com/mojombo/jekyll) static site generator. Any features not required to build [indy.io](http://indy.io) have been removed.

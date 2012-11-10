@@ -15,7 +15,7 @@ exports['metadata.test.js'] = {
   },
 
   'number of subdirectories, ignoring layouts directory' : function(test) {
-    test.deepEqual(5, m._directories.length);
+    test.deepEqual(6, m._directories.length);
     test.done();
   },
 

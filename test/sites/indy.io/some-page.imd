@@ -1,4 +1,4 @@
 ---
-"layout": "default"
+"template": "default"
 ---
 The title of this page is #{title}

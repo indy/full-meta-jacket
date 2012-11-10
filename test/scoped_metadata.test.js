@@ -7,12 +7,32 @@ var m = metadata.fullBuild('test/files/metadata');
 
 exports['scoped_metadata.test.js'] = {
 
-  'scopedBuild project/index.html' : function(test) {
-    test.expect(2);
-    metadata.scopedBuild(m, 'project/index.html', function(e, scoped) {
-      //    utils.writeMeta('../project-1-meta.js', scoped);
+  'beatle value from file header' : function(test) {
+    test.expect(3);
+    metadata.scopedBuild(m, 'beatles-a/index.html', function(e, scoped) {
       test.ifError(e);
       test.equal(scoped.javascripts.length, 2);
+      test.equal(scoped.beatle, "ringo");
+    });
+    test.done();
+  },
+
+  'beatle value from template header' : function(test) {
+    test.expect(3);
+    metadata.scopedBuild(m, 'beatles-a/index2.html', function(e, scoped) {
+      test.ifError(e);
+      test.equal(scoped.javascripts.length, 5);
+      test.equal(scoped.beatle, "george");
+    });
+    test.done();
+  },
+
+  'beatle value from _vars' : function(test) {
+    test.expect(3);
+    metadata.scopedBuild(m, 'beatles-b/index3.html', function(e, scoped) {
+      test.ifError(e);
+      test.equal(scoped.javascripts.length, 5);
+      test.equal(scoped.beatle, "john");
     });
     test.done();
   },
