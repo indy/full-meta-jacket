@@ -5,6 +5,7 @@ var site = require('../lib/site');
 var assert = require("assert");
 var imbue = require("../lib/imbue");
 var utils = require("../lib/utils");
+var metadata = require("../lib/metadata");
 var fs = require("fs");
 
 var prefix = "test/files/imbue/";
@@ -18,15 +19,13 @@ function dbgOutput(fn, data, filename) {
   console.log(fn(input, data));
 }
 
-
-
 function compare(test, filename, data) {
   var input = fs.readFileSync(prefix + filename, "utf8");
   var expected = fs.readFileSync(prefix + filename + postfix, "utf8");
 
   var hb = imbue.parse(input);
   hb.header._filename = filename;
-  var res = imbue.render(utils.deepMerge(hb.header, data),
+  var res = imbue.render(metadata._deepMerge(hb.header, data),
                          hb.body); // use markdown was here
 
 
