@@ -1,4 +1,0 @@
----
-"posts": [{"title": "alpha"}, {"title": "beta"}, {"title": "delta"}]
----
-{{=: posts | eachWith:'list-item'}}

@@ -1,7 +1,0 @@
----
-"template": "listing-page",
-"title": "Journal"
----
-
-{{=: posts | listWith:'post' }}
-

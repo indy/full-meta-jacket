@@ -1,9 +1,0 @@
----
-"template": "project-page",
-"title": "Hyde"
----
-Hyde is a fork of the [Jekyll](http://github.com/mojombo/jekyll) static site generator. Any features not required to build [indy.io](http://indy.io) have been removed.
-
-What's left is small library that allows layouts to be shared amongst pages and different sections to have their own index pages. HTML is written in HTML, CSS is written in CSS and the only external dependency is the Liquid templating library.
-
-You can download Hyde from Github at [github.com/indy/hyde](http://github.com/indy/hyde)
