@@ -8,7 +8,7 @@ var filenameC = 'another-post.imd';
 
 exports['implicit_metadata.test.js'] = {
 
-  'hadDateInFilename' : function(test) {
+  'hadDateInFilename' : function (test) {
     test.expect(3);
     test.deepEqual(m._fn.hasDateInFilename(filenameA), true);
     test.deepEqual(m._fn.hasDateInFilename(filenameB), false);
@@ -17,7 +17,7 @@ exports['implicit_metadata.test.js'] = {
   },
 
 
-  'sanitiseTitle' : function(test) {
+  'sanitiseTitle' : function (test) {
     test.expect(3);
     test.deepEqual(m._fn.sanitiseTitle('hello-world'), 'hello world');
     test.deepEqual(m._fn.sanitiseTitle('hello-world.txt'), 'hello world');
@@ -25,7 +25,7 @@ exports['implicit_metadata.test.js'] = {
     test.done();
   },
 
-  'fullUri' : function(test) {
+  'fullUri' : function (test) {
     test.expect(2);
     test.deepEqual(m._fn.fullUri('/foo', 'bar.html'), '/foo/bar.html');
     test.deepEqual(m._fn.fullUri('/foo/_posts', 'bar.html'), '/foo/bar.html');
@@ -33,7 +33,7 @@ exports['implicit_metadata.test.js'] = {
   },
 
 
-  'derive metadata from filenames' : function(test) {
+  'derive metadata from filenames' : function (test) {
     var expectedA = { _useImbue: true,
                       _useMarkdown : true,
                       _outFileExt : 'html',

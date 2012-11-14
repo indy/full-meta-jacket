@@ -7,7 +7,7 @@ var fs = require('fs');
 var layouts = template.build('test/files/template');
 
 exports['read all layouts'] = {
-  'size of layouts': function(test) {
+  'size of layouts': function (test) {
     test.expect(1);
     test.equal(utils.objectSize(layouts), 3);
     test.done();

@@ -5,7 +5,7 @@ var utils = require('../lib/utils');
 
 exports['published_date.test.js'] = {
 
-  "published date": function(test) {
+  "published date": function (test) {
 
     // 3 of the 4 posts in test/files/published_date have a 'published_date'
     // attribute. This tests to make sure they're copied into a published

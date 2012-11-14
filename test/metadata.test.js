@@ -8,18 +8,18 @@ var m = metadata.fullBuild('test/files/metadata');
 
 
 exports['metadata.test.js'] = {
-  'number of files in a folder' : function(test) {
+  'number of files in a folder' : function (test) {
     test.deepEqual(1, m._files.length);
     test.deepEqual(2, m.simple._files.length);
     test.done();
   },
 
-  'number of subdirectories, ignoring layouts directory' : function(test) {
+  'number of subdirectories, ignoring layouts directory' : function (test) {
     test.deepEqual(6, m._directories.length);
     test.done();
   },
 
-  'mark all directories correctly' : function(test) {
+  'mark all directories correctly' : function (test) {
     test.ok(m._isDirectory);
     test.ok(m.journal._isDirectory);
     test.ok(m.simple._isDirectory);
@@ -29,7 +29,7 @@ exports['metadata.test.js'] = {
     test.done();
   },
 
-  'implicit file metadata' : function(test) {
+  'implicit file metadata' : function (test) {
     var j = m.journal;
     test.deepEqual("/journal/_posts/a1.imd", j['a1.html']._locals._filename);
     test.deepEqual("/journal/_posts/b2.imd", j['b2.html']._locals._filename);
@@ -43,23 +43,23 @@ exports['metadata.test.js'] = {
     test.done();
   },
 
-  'explicit file metadata' : function(test) {
+  'explicit file metadata' : function (test) {
     var j = m.journal;
     test.deepEqual(3, j['a1.html']._locals.names.length);
     test.done();
   },
 
-  'top-level zonal metadata' : function(test) {
+  'top-level zonal metadata' : function (test) {
     test.deepEqual("Catch-22", m._locals['book-title']);
     test.done();
   },
 
-  'zonal metadata in a sub-directory' : function(test) {
+  'zonal metadata in a sub-directory' : function (test) {
     test.deepEqual("A journal", m.journal._locals['journal-title']);
     test.done();
   },
 
-  'less files correctly marked as css' : function(test) {
+  'less files correctly marked as css' : function (test) {
     var lessCSS = m.css["style.css"]._locals;
 
     // some metadata attributes related to css rendering
@@ -73,13 +73,13 @@ exports['metadata.test.js'] = {
                     "title": "style"};
 
     test.expect(expected.length);
-    for(var i in expected) {
+    for (var i in expected) {
       test.deepEqual(expected[i], lessCSS[i]);
     }
     test.done();
   },
 
-  'stylus files correctly marked as css' : function(test) {
+  'stylus files correctly marked as css' : function (test) {
     var stylusCSS = m.css["design.css"]._locals;
 
     // some metadata attributes related to css rendering
@@ -92,33 +92,33 @@ exports['metadata.test.js'] = {
                     "_directCopy": false};
 
     test.expect(expected.length);
-    for(var i in expected) {
+    for (var i in expected) {
       test.deepEqual(expected[i], stylusCSS[i]);
     }
     test.done();
   },
 
 
-  'posts metadata' : function(test) {
-    var postsMeta = m['journal']['_locals']['posts'];
+  'posts metadata' : function (test) {
+    var postsMeta = m.journal._locals.posts;
 
     test.equal(postsMeta.length, 3);
     test.done();
   },
 
-  'local variables in file' : function(test) {
+  'local variables in file' : function (test) {
     test.equal("murmur@example.com", m['index.html']._locals.email);
     test.done();
   },
 
 
-  'metadata structured around served content' : function(test) {
+  'metadata structured around served content' : function (test) {
     test.ok(m['index.html']);
 
     // also check that posts are in the right place
-    test.ok(m['journal']['a1.html']);
-    test.ok(m['journal']['b2.html']);
-    test.ok(m['journal']['c3.html']);
+    test.ok(m.journal['a1.html']);
+    test.ok(m.journal['b2.html']);
+    test.ok(m.journal['c3.html']);
     test.done();
   }
 
