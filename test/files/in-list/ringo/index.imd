@@ -1,0 +1,10 @@
+---
+"published": "true",
+"beatle": "ringo",
+"in-list": "music",
+"template": "default",
+"javascripts": ["/js/from-header-a.js",
+                "/js/from-header-b.js"]
+---
+
+#hello world

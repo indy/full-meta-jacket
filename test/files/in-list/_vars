@@ -1,0 +1,6 @@
+---
+"siteName": "FakeSite",
+"book-title": "Catch-22",
+"javascripts": ["/js/from-var-1.js",
+                "/js/from-var-2.js"]
+---
