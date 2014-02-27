@@ -1,0 +1,8 @@
+---
+---
+doctype
+html
+  head
+    title #{title}
+  body
+    block default-content

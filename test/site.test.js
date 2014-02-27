@@ -50,7 +50,13 @@ exports['site.test.js'] = {
   'check jaded-1' : function (test) {
     compareAllGeneratedFiles(test, 'jaded-1');
     test.done();
+  },
+
+  'check in-list' : function (test) {
+    compareAllGeneratedFiles(test, 'in-list');
+    test.done();
   }
+
 
 };
 
