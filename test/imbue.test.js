@@ -1,8 +1,9 @@
+var expect = require("chai").expect;
+
 var temp = require('temp');
 var path = require('path');
 var site = require('../lib/site');
 
-var assert = require("assert");
 var imbue = require("../lib/imbue");
 var utils = require("../lib/utils");
 var metadata = require("../lib/metadata");
@@ -19,7 +20,7 @@ function dbgOutput(fn, data, filename) {
   console.log(fn(input, data));
 }
 
-function compare(test, filename, data) {
+function compare(filename, data) {
   var input = fs.readFileSync(prefix + filename, "utf8");
   var expected = fs.readFileSync(prefix + filename + postfix, "utf8");
 
@@ -29,33 +30,27 @@ function compare(test, filename, data) {
                          hb.body); // use markdown was here
 
 
-  test.equal(res.trim(), expected.trim());
+  expect(res.trim()).to.equal(expected.trim());
+  // test.equal(res.trim(), expected.trim());
 }
 
-exports['imbue.test.js'] = {
+describe('imbue', function() {
 
-  "a simple imbue file with no header information": function (test) {
-    test.expect(1);
-    compare(test, "jaded1.imd", {});
-    test.done();
-  },
+  it('a simple imbue file with no header information', () => {
+    compare("jaded1.imd", {});
+  });
 
-  "an imbue file with a layout" : function (test) {
-    test.expect(2);
-    compare(test, "with-layout.imd", {
+  it('an imbue file with a layout', () => {
+    compare("with-layout.imd", {
       // set the path so that it"s treated as though it"s in the same
       // directory as the processed jade files
       _jade_filename: "test/files/imbue/jade/with-layout.imd"
     });
-    test.equal(1, 1);
-    test.done();
-  },
+  });
 
-  "an imbue file with a nested layout": function (test) {
-    test.expect(1);
-    compare(test, "with-nested-layout.imd", {
+  it('an imbue file with a nested layout', () => {
+    compare("with-nested-layout.imd", {
       _jade_filename: "test/files/imbue/jade/with-nested-layout.imd"
     });
-    test.done();
-  }
-};
+  });
+});

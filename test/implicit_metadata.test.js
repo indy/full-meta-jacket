@@ -1,4 +1,5 @@
-var assert = require('assert');
+var expect = require("chai").expect;
+
 var m = require('../lib/metadata');
 
 var folder = '/journal';
@@ -6,34 +7,28 @@ var filenameA = '2020-11-16-future-post.imd';
 var filenameB = 'another-post.html';
 var filenameC = 'another-post.imd';
 
-exports['implicit_metadata.test.js'] = {
+describe("implicit_metadata", function() {
 
-  'hadDateInFilename' : function (test) {
-    test.expect(3);
-    test.deepEqual(m._fn.hasDateInFilename(filenameA), true);
-    test.deepEqual(m._fn.hasDateInFilename(filenameB), false);
-    test.deepEqual(m._fn.hasDateInFilename(filenameC), false);
-    test.done();
-  },
+  it('hadDateInFilename', () => {
+    expect(m._fn.hasDateInFilename(filenameA)).to.be.true;
+    expect(m._fn.hasDateInFilename(filenameB)).to.not.be.true;
+    expect(m._fn.hasDateInFilename(filenameC)).to.not.be.true;
+  });
 
 
-  'sanitiseTitle' : function (test) {
-    test.expect(3);
-    test.deepEqual(m._fn.sanitiseTitle('hello-world'), 'hello world');
-    test.deepEqual(m._fn.sanitiseTitle('hello-world.txt'), 'hello world');
-    test.deepEqual(m._fn.sanitiseTitle('hello-hip--hop.txt'), 'hello hip-hop');
-    test.done();
-  },
+  it('sanitiseTitle', () => {
+    expect(m._fn.sanitiseTitle('hello-world')).to.equal('hello world');
+    expect(m._fn.sanitiseTitle('hello-world.txt')).to.equal('hello world');
+    expect(m._fn.sanitiseTitle('hello-hip--hop.txt')).to.equal('hello hip-hop');
+  });
 
-  'fullUri' : function (test) {
-    test.expect(2);
-    test.deepEqual(m._fn.fullUri('/foo', 'bar.html'), '/foo/bar.html');
-    test.deepEqual(m._fn.fullUri('/foo/_posts', 'bar.html'), '/foo/bar.html');
-    test.done();
-  },
+  it('fullUri', () => {
+    expect(m._fn.fullUri('/foo', 'bar.html')).to.equal('/foo/bar.html');
+    expect(m._fn.fullUri('/foo/_posts', 'bar.html')).to.equal('/foo/bar.html');
+  });
 
 
-  'derive metadata from filenames' : function (test) {
+  it('derive metadata from filenames', () => {
     var expectedA = { _useImbue: true,
                       _useMarkdown : true,
                       _outFileExt : 'html',
@@ -55,13 +50,7 @@ exports['implicit_metadata.test.js'] = {
     var actualA = m._fn.deriveMetadata(folder, filenameA);
     var actualB = m._fn.deriveMetadata(folder, filenameB);
 
-    test.expect(2);
-    test.deepEqual(expectedA, actualA);
-    test.deepEqual(expectedB, actualB);
-    test.done();
-  }
-
-};
-
-
-
+    expect(expectedA).to.deep.equal(actualA);
+    expect(expectedB).to.deep.equal(actualB);
+  });
+});

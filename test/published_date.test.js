@@ -1,11 +1,12 @@
-var assert = require('assert');
+var expect = require("chai").expect;
+
 var site = require('../lib/site');
 var metadata = require('../lib/metadata');
 var utils = require('../lib/utils');
 
-exports['published_date.test.js'] = {
+describe("published_date", function() {
 
-  "published date": function (test) {
+  it("published date", () => {
 
     // 3 of the 4 posts in test/files/published_date have a 'published_date'
     // attribute. This tests to make sure they're copied into a published
@@ -24,7 +25,6 @@ exports['published_date.test.js'] = {
     //  for(var i=0;i<expectedDates.length;i++){
     //    assert.equal(published[i].published_date, expectedDates[i]);
     //  }
-    test.equal(1, 1);
-    test.done();
-  }
-};
+    expect(1).to.equal(1);
+  });
+});

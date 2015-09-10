@@ -1,4 +1,5 @@
-var assert = require('assert');
+var expect = require("chai").expect;
+
 var metadata = require('../lib/metadata');
 var utils = require('../lib/utils');
 
@@ -7,59 +8,55 @@ var m = metadata.fullBuild('test/files/metadata');
 // utils.writeMeta('../traverse-1-meta.js', m);
 
 
-exports['metadata.test.js'] = {
-  'number of files in a folder' : function (test) {
-    test.deepEqual(1, m._files.length);
-    test.deepEqual(2, m.simple._files.length);
-    test.done();
-  },
+describe('metadata.test.js', function() {
 
-  'number of subdirectories, ignoring layouts directory' : function (test) {
-    test.deepEqual(6, m._directories.length);
-    test.done();
-  },
+  it('number of files in a folder', () => {
+    expect(m._files.length).to.equal(1);
+    expect(m.simple._files.length).to.equal(2);
+  });
 
-  'mark all directories correctly' : function (test) {
-    test.ok(m._isDirectory);
-    test.ok(m.journal._isDirectory);
-    test.ok(m.simple._isDirectory);
+  it('number of subdirectories, ignoring layouts directory', () => {
+    expect(m._directories.length).to.equal(6);
+  });
 
-    test.ok(!m['index.html']._isDirectory);
-    test.ok(!m.journal['a1.html']._isDirectory);
-    test.done();
-  },
+  it('mark all directories correctly', () => {
+    expect(m._isDirectory).to.be.true;
+    expect(m.journal._isDirectory).to.be.true;
+    expect(m.simple._isDirectory).to.be.true;
 
-  'implicit file metadata' : function (test) {
+    expect(m['index.html']._isDirectory).to.not.be.true;
+    expect(m.journal['a1.html']._isDirectory).to.not.be.true;
+  });
+
+  it('implicit file metadata', () => {
     var j = m.journal;
-    test.deepEqual("/journal/_posts/a1.imd", j['a1.html']._locals._filename);
-    test.deepEqual("/journal/_posts/b2.imd", j['b2.html']._locals._filename);
-    test.deepEqual("/journal/_posts/c3.imd", j['c3.html']._locals._filename);
+    expect(j['a1.html']._locals._filename).to.equal("/journal/_posts/a1.imd");
+    expect(j['b2.html']._locals._filename).to.equal("/journal/_posts/b2.imd");
+    expect(j['c3.html']._locals._filename).to.equal("/journal/_posts/c3.imd");
 
-    test.deepEqual("/index.html", m['index.html']._locals.uri);
-    test.deepEqual("/simple/simple.png", m.simple['simple.png']._locals.uri);
-    test.deepEqual("/journal/a1.html", j['a1.html']._locals.uri);
-    test.deepEqual("/journal/b2.html", j['b2.html']._locals.uri);
-    test.deepEqual("/journal/c3.html", j['c3.html']._locals.uri);
-    test.done();
-  },
 
-  'explicit file metadata' : function (test) {
+    expect(m['index.html']._locals.uri).to.equal("/index.html");
+    expect(m.simple['simple.png']._locals.uri).to.equal("/simple/simple.png");
+
+    expect(j['a1.html']._locals.uri).to.equal("/journal/a1.html");
+    expect(j['b2.html']._locals.uri).to.equal("/journal/b2.html");
+    expect(j['c3.html']._locals.uri).to.equal("/journal/c3.html");
+  });
+
+  it('explicit file metadata', () => {
     var j = m.journal;
-    test.deepEqual(3, j['a1.html']._locals.names.length);
-    test.done();
-  },
+    expect(j['a1.html']._locals.names.length).to.equal(3);
+  });
 
-  'top-level zonal metadata' : function (test) {
-    test.deepEqual("Catch-22", m._locals['book-title']);
-    test.done();
-  },
+  it('top-level zonal metadata', () => {
+    expect(m._locals['book-title']).to.equal("Catch-22");
+  });
 
-  'zonal metadata in a sub-directory' : function (test) {
-    test.deepEqual("A journal", m.journal._locals['journal-title']);
-    test.done();
-  },
+  it('zonal metadata in a sub-directory', () => {
+    expect(m.journal._locals['journal-title']).to.equal("A journal");
+  });
 
-  'less files correctly marked as css' : function (test) {
+  it('less files correctly marked as css', () => {
     var lessCSS = m.css["style.css"]._locals;
 
     // some metadata attributes related to css rendering
@@ -72,14 +69,13 @@ exports['metadata.test.js'] = {
                     "_directCopy": false,
                     "title": "style"};
 
-    test.expect(expected.length);
     for (var i in expected) {
-      test.deepEqual(expected[i], lessCSS[i]);
+      expect(lessCSS[i]).to.equal(expected[i]);
     }
-    test.done();
-  },
+  });
 
-  'stylus files correctly marked as css' : function (test) {
+
+  it('stylus files correctly marked as css', () => {
     var stylusCSS = m.css["design.css"]._locals;
 
     // some metadata attributes related to css rendering
@@ -91,35 +87,29 @@ exports['metadata.test.js'] = {
                     "uri": "/css/design.css",
                     "_directCopy": false};
 
-    test.expect(expected.length);
     for (var i in expected) {
-      test.deepEqual(expected[i], stylusCSS[i]);
+      expect(stylusCSS[i]).to.equal(expected[i]);
     }
-    test.done();
-  },
+  });
 
 
-  'posts metadata' : function (test) {
+  it('posts metadata', () => {
     var postsMeta = m.journal._locals.posts;
 
-    test.equal(postsMeta.length, 3);
-    test.done();
-  },
+    expect(postsMeta.length).to.equal(3);
+  });
 
-  'local variables in file' : function (test) {
-    test.equal("murmur@example.com", m['index.html']._locals.email);
-    test.done();
-  },
+  it('local variables in file', () => {
+    expect(m['index.html']._locals.email).to.equal("murmur@example.com");
+  });
 
-
-  'metadata structured around served content' : function (test) {
-    test.ok(m['index.html']);
+  it('metadata structured around served content', () => {
+    expect(m['index.html']).to.be.ok;
 
     // also check that posts are in the right place
-    test.ok(m.journal['a1.html']);
-    test.ok(m.journal['b2.html']);
-    test.ok(m.journal['c3.html']);
-    test.done();
-  }
+    expect(m.journal['a1.html']).to.be.ok;
+    expect(m.journal['b2.html']).to.be.ok;
+    expect(m.journal['c3.html']).to.be.ok;
+  });
 
-};
+});

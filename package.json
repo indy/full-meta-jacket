@@ -3,6 +3,9 @@
   "description": "The 42nd best static site generator for node.js",
   "version": "0.7.5",
   "author": "Inderjit Gill <email@indy.io>",
+  "scripts": {
+    "test": "mocha"
+  },
   "dependencies": {
     "markdown": "0.5.0",
     "jade": "1.1.5",
@@ -12,12 +15,24 @@
     "connect": "2.12.0",
     "temp": "0.6.0"
   },
-  "keywords": ["website", "blog", "static", "site", "generator"],
+  "keywords": [
+    "website",
+    "blog",
+    "static",
+    "site",
+    "generator"
+  ],
   "repository": "git://github.com/indy/full-meta-jacket",
   "main": "index",
-  "bin": { "fmj": "./bin/fmj" },
+  "bin": {
+    "fmj": "./bin/fmj"
+  },
   "license": "MIT",
   "engine": {
-    "node": ">=0.8.2"
+    "node": ">=4.0.0"
+  },
+  "devDependencies": {
+    "chai": "^3.2.0",
+    "mocha": "^2.3.2"
   }
 }
