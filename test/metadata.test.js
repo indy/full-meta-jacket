@@ -1,10 +1,10 @@
-var expect = require("chai").expect;
+const expect = require("chai").expect;
 
-var metadata = require('../lib/metadata');
-var utils = require('../lib/utils');
+const metadata = require('../lib/metadata');
+const utils = require('../lib/utils');
 
 // load metadata for one heirarchy and test multiple aspects from it
-var m = metadata.fullBuild('test/files/metadata');
+const m = metadata.fullBuild('test/files/metadata');
 // utils.writeMeta('../traverse-1-meta.js', m);
 
 
@@ -29,7 +29,7 @@ describe('metadata.test.js', function() {
   });
 
   it('implicit file metadata', () => {
-    var j = m.journal;
+    const j = m.journal;
     expect(j['a1.html']._locals._filename).to.equal("/journal/_posts/a1.imd");
     expect(j['b2.html']._locals._filename).to.equal("/journal/_posts/b2.imd");
     expect(j['c3.html']._locals._filename).to.equal("/journal/_posts/c3.imd");
@@ -44,7 +44,7 @@ describe('metadata.test.js', function() {
   });
 
   it('explicit file metadata', () => {
-    var j = m.journal;
+    const j = m.journal;
     expect(j['a1.html']._locals.names.length).to.equal(3);
   });
 
@@ -57,10 +57,10 @@ describe('metadata.test.js', function() {
   });
 
   it('less files correctly marked as css', () => {
-    var lessCSS = m.css["style.css"]._locals;
+    const lessCSS = m.css["style.css"]._locals;
 
     // some metadata attributes related to css rendering
-    var expected = {"_filename": "/css/style.less",
+    const expected = {"_filename": "/css/style.less",
                     "_useImbue": false,
                     "_outFileExt": "css",
                     "_useLess": true,
@@ -76,10 +76,10 @@ describe('metadata.test.js', function() {
 
 
   it('stylus files correctly marked as css', () => {
-    var stylusCSS = m.css["design.css"]._locals;
+    const stylusCSS = m.css["design.css"]._locals;
 
     // some metadata attributes related to css rendering
-    var expected = {"_filename": "/css/design.stylus",
+    const expected = {"_filename": "/css/design.stylus",
                     "_useImbue": false,
                     "_outFileExt": "css",
                     "_useStylus": true,
@@ -94,7 +94,7 @@ describe('metadata.test.js', function() {
 
 
   it('posts metadata', () => {
-    var postsMeta = m.journal._locals.posts;
+    const postsMeta = m.journal._locals.posts;
 
     expect(postsMeta.length).to.equal(3);
   });

@@ -1,40 +1,40 @@
-var expect = require("chai").expect;
+const expect = require("chai").expect;
 
-var metadata = require('../lib/metadata');
-var utils = require('../lib/utils');
+const metadata = require('../lib/metadata');
+const utils = require('../lib/utils');
 
 // load metadata for one heirarchy and test multiple aspects from it
-var m = metadata.fullBuild('test/files/metadata');
+const m = metadata.fullBuild('test/files/metadata');
 
 describe("scoped_metadata", function() {
 
   it('beatle value from file header', () => {
-    var scoped = metadata.scopedBuild(m, 'beatles-a/index.html');
+    const scoped = metadata.scopedBuild(m, 'beatles-a/index.html');
     expect(scoped.javascripts.length).to.equal(2);
     expect(scoped.beatle).to.equal("ringo");
   });
 
   it('beatle value from template header', () => {
-    var scoped = metadata.scopedBuild(m, 'beatles-a/index2.html');
+    const scoped = metadata.scopedBuild(m, 'beatles-a/index2.html');
     expect(scoped.javascripts.length).to.equal(5);
     expect(scoped.beatle).to.equal("george");
   });
 
   it('beatle value from _vars', () => {
-    var scoped = metadata.scopedBuild(m, 'beatles-b/index3.html');
+    const scoped = metadata.scopedBuild(m, 'beatles-b/index3.html');
     expect(scoped.javascripts.length).to.equal(5);
     expect(scoped.beatle).to.equal("john");
   });
 
   it('scopedBuild index.html', () => {
-    var scoped = metadata.scopedBuild(m, '/index.html');
+    const scoped = metadata.scopedBuild(m, '/index.html');
     expect(scoped.email).to.equal("murmur@example.com");
     expect(scoped._filename).to.equal("/index.imd");
     expect(scoped.siteName).to.equal("FakeSite");
   });
 
   it('scopedBuild journal/a1.html', () => {
-    var scoped = metadata.scopedBuild(m, '/journal/a1.html');
+    const scoped = metadata.scopedBuild(m, '/journal/a1.html');
     expect(scoped.posts.length).to.equal(3);
     expect(scoped['journal-title']).to.equal("A journal");
 
@@ -47,7 +47,7 @@ describe("scoped_metadata", function() {
   });
 
   it('scopedBuild journal/c3.html', () => {
-    var scoped = metadata.scopedBuild(m, '/journal/c3.html');
+    const scoped = metadata.scopedBuild(m, '/journal/c3.html');
     expect(scoped.posts.length).to.equal(3);
     // shadowing the journal scope variable with a c3 specific one
     expect(scoped['journal-title']).to.equal("custom title");
@@ -61,19 +61,19 @@ describe("scoped_metadata", function() {
   });
 
   it('scopedBuild for simple content', () => {
-    var scoped = metadata.scopedBuild(m, '/simple/simple.html');
+    const scoped = metadata.scopedBuild(m, '/simple/simple.html');
     expect(scoped._filename).to.equal('/simple/simple.html');
 
-    scoped = metadata.scopedBuild(m, '/simple/simple.png');
-    expect(scoped._directCopy).to.be.true;
+    const scoped2 = metadata.scopedBuild(m, '/simple/simple.png');
+    expect(scoped2._directCopy).to.be.true;
   });
 
   it('building scoped metadata', () => {
 
-    var lm = {a: { _locals: {z: 1},
-                   b: { _locals: {y: 2}}}};
+    const lm = {a: { _locals: {z: 1},
+                     b: { _locals: {y: 2}}}};
 
-    var scoped = metadata.scopedBuild(lm, '/a/b/');
+    const scoped = metadata.scopedBuild(lm, '/a/b/');
     expect(scoped.z).to.equal(1);
     expect(scoped.y).to.equal(2);
 

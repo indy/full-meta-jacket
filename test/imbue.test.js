@@ -1,32 +1,32 @@
-var expect = require("chai").expect;
+const expect = require("chai").expect;
 
-var temp = require('temp');
-var path = require('path');
-var site = require('../lib/site');
+const temp = require('temp');
+const path = require('path');
+const site = require('../lib/site');
 
-var imbue = require("../lib/imbue");
-var utils = require("../lib/utils");
-var metadata = require("../lib/metadata");
-var fs = require("fs");
+const imbue = require("../lib/imbue");
+const utils = require("../lib/utils");
+const metadata = require("../lib/metadata");
+const fs = require("fs");
 
-var prefix = "test/files/imbue/";
-var postfix = ".expected";
+const prefix = "test/files/imbue/";
+const postfix = ".expected";
 
 // rather than this simple file comparison it would be better to
 // parse the resultant html and do a DOM compare
 
 function dbgOutput(fn, data, filename) {
-  var input = fs.readFileSync(prefix + filename, "utf8");
+  const input = fs.readFileSync(prefix + filename, "utf8");
   console.log(fn(input, data));
 }
 
 function compare(filename, data) {
-  var input = fs.readFileSync(prefix + filename, "utf8");
-  var expected = fs.readFileSync(prefix + filename + postfix, "utf8");
+  const input = fs.readFileSync(prefix + filename, "utf8");
+  const expected = fs.readFileSync(prefix + filename + postfix, "utf8");
 
-  var hb = imbue.parse(input);
+  const hb = imbue.parse(input);
   hb.header._filename = filename;
-  var res = imbue.render(metadata._deepMerge(hb.header, data),
+  const res = imbue.render(metadata._deepMerge(hb.header, data),
                          hb.body); // use markdown was here
 
 

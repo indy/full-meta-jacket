@@ -1,11 +1,11 @@
-var expect = require("chai").expect;
+const expect = require("chai").expect;
 
-var m = require('../lib/metadata');
+const m = require('../lib/metadata');
 
-var folder = '/journal';
-var filenameA = '2020-11-16-future-post.imd';
-var filenameB = 'another-post.html';
-var filenameC = 'another-post.imd';
+const folder = '/journal';
+const filenameA = '2020-11-16-future-post.imd';
+const filenameB = 'another-post.html';
+const filenameC = 'another-post.imd';
 
 describe("implicit_metadata", function() {
 
@@ -29,7 +29,7 @@ describe("implicit_metadata", function() {
 
 
   it('derive metadata from filenames', () => {
-    var expectedA = { _useImbue: true,
+    const expectedA = { _useImbue: true,
                       _useMarkdown : true,
                       _outFileExt : 'html',
                       _filename : '/journal/2020-11-16-future-post.imd',
@@ -39,7 +39,7 @@ describe("implicit_metadata", function() {
                       publishedFilename: '2020-11-16-future-post.html'
                     };
 
-    var expectedB = {_useImbue: true,
+    const expectedB = {_useImbue: true,
                      _outFileExt : 'html',
                      _filename : '/journal/another-post.html',
                      title: 'another post',
@@ -47,8 +47,8 @@ describe("implicit_metadata", function() {
                      publishedFilename: 'another-post.html'
                     };
 
-    var actualA = m._fn.deriveMetadata(folder, filenameA);
-    var actualB = m._fn.deriveMetadata(folder, filenameB);
+    const actualA = m._fn.deriveMetadata(folder, filenameA);
+    const actualB = m._fn.deriveMetadata(folder, filenameB);
 
     expect(expectedA).to.deep.equal(actualA);
     expect(expectedB).to.deep.equal(actualB);
