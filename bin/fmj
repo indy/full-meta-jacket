@@ -1,31 +1,5 @@
 #!/usr/bin/env node
 
-/**
- * Module dependencies.
- */
-
 var fmj = require('../');
-var program = require('commander');
 
-program
-  .version(fmj.version)
-  .option('-o, --output <string>', 'destination for static files')
-  .option('-p, --port <n>', 'port', parseInt)
-  .option('-m, --meta <string>', 'location to save meta file (for debugging)')
-  .parse(process.argv);
-
-var path = program.args.shift() || '.';
-
-if(program.output) {
-  fmj.staticSite(path, program.output);
-} else {
-
-  var port = program.port ? program.port : 3000;
-
-  var options = {}
-  options.metaLocation = program.meta;
-
-  fmj.liveSite(path, port, options);
-}
-
-
+fmj.main();
