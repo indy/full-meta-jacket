@@ -62,16 +62,13 @@ app.get('*', function(req, res){
 
   var headers = {};
 
-  page.render(meta, path, function(e, content) {
-    if(e) {
-      console.error(path);
-      res.send(errorMessage(e, path), headers);
-    } else {
-      headers = path.slice(-3) === 'css' ? {'Content-Type': 'text/css' } : {};
-      res.send(content, headers);
-    }
+  page.render(meta, path).then(content => {
+    headers = path.slice(-3) === 'css' ? {'Content-Type': 'text/css' } : {};
+    res.send(content, headers);
+  }).catch(e => {
+    console.error(path);
+    res.send(errorMessage(e, path), headers);
   });
-
 });
 
 app.listen(3000);
