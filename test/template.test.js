@@ -9,6 +9,8 @@ var layouts = template.build('test/files/template');
 
 describe("template", function() {
   it('read all layouts', () => {
-    expect(utils.objectSize(layouts)).to.equal(3);
+    return layouts.then(l => {
+      expect(utils.objectSize(l)).to.equal(3);
+    });
   });
 });

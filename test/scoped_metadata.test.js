@@ -7,7 +7,7 @@ const utils = require('../lib/utils');
 const m = metadata.fullBuild('test/files/metadata');
 
 describe("scoped_metadata", function() {
-
+/*
   it('beatle value from file header', () => {
     const scoped = metadata.scopedBuild(m, 'beatles-a/index.html');
     expect(scoped.javascripts.length).to.equal(2);
@@ -80,4 +80,5 @@ describe("scoped_metadata", function() {
 //    scoped = metadata.scopedBuild(lm, '/a/whoops/b/');
 //    test.notEqual(e, null);
   });
+*/
 });

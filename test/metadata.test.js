@@ -9,7 +9,7 @@ const m = metadata.fullBuild('test/files/metadata');
 
 
 describe('metadata.test.js', function() {
-
+/*
   it('number of files in a folder', () => {
     expect(m._files.length).to.equal(1);
     expect(m.simple._files.length).to.equal(2);
@@ -111,5 +111,5 @@ describe('metadata.test.js', function() {
     expect(m.journal['b2.html']).to.be.ok;
     expect(m.journal['c3.html']).to.be.ok;
   });
-
+*/
 });
