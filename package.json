@@ -9,10 +9,12 @@
   "dependencies": {
     "commander": "2.8.1",
     "connect": "3.4.0",
+    "errorhandler": "^1.4.2",
     "jade": "1.11.0",
     "jstransformer-markdown": "^1.1.0",
     "less": "2.5.1",
     "markdown": "0.5.0",
+    "serve-favicon": "^2.3.0",
     "stylus": "0.52.4",
     "temp": "0.8.3"
   },
