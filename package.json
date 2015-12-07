@@ -16,7 +16,8 @@
     "markdown": "0.5.0",
     "serve-favicon": "^2.3.0",
     "stylus": "0.52.4",
-    "temp": "0.8.3"
+    "temp": "0.8.3",
+    "watch": "^0.16.0"
   },
   "keywords": [
     "website",
