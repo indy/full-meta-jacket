@@ -29,9 +29,7 @@ function compare(filename, data) {
   const res = imbue.render(metadata._deepMerge(hb.header, data),
                          hb.body); // use markdown was here
 
-
   expect(res.trim()).to.equal(expected.trim());
-  // test.equal(res.trim(), expected.trim());
 }
 
 describe('imbue', function() {
@@ -52,5 +50,9 @@ describe('imbue', function() {
     compare("with-nested-layout.imd", {
       _jade_filename: "test/files/imbue/jade/with-nested-layout.imd"
     });
+  });
+
+  it('should identify an imd file that begins with source code', () => {
+    compare("starts-with-source.imd", {});
   });
 });
