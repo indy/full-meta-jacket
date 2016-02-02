@@ -1,16 +1,12 @@
-var expect = require("chai").expect;
+const expect = require("chai").expect;
 
-var template = require('../lib/template');
-var utils = require('../lib/utils');
-var fs = require('fs');
+const template = require('../lib/template');
+const utils = require('../lib/utils');
 
 // load layouts once, test multiple aspects
-var layouts = template.build('test/files/template');
+const layouts = template.build('test/files/template');
 
-describe("template", function() {
-  it('read all layouts', () => {
-    return layouts.then(l => {
-      expect(utils.objectSize(l)).to.equal(3);
-    });
-  });
+describe("template", () => {
+  it('read all layouts', () =>
+     layouts.then(l => expect(utils.objectSize(l)).to.equal(3)));
 });

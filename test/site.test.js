@@ -1,6 +1,5 @@
 const expect = require("chai").expect;
 
-const temp = require('temp');
 const path = require('path');
 
 const utils = require('../lib/utils');

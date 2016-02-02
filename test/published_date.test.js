@@ -1,10 +1,8 @@
 const expect = require("chai").expect;
 
-const site = require('../lib/site');
 const metadata = require('../lib/metadata');
-const utils = require('../lib/utils');
 
-describe("published_date", function() {
+describe("published_date", () => {
 
   it("published date", () => {
 
