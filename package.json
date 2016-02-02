@@ -10,11 +10,9 @@
     "checksum": "^0.1.1",
     "commander": "2.9.0",
     "connect": "3.4.1",
-    "errorhandler": "^1.4.3",
     "jade": "1.11.0",
     "jstransformer-markdown": "^1.1.0",
     "less": "2.6.0",
-    "serve-favicon": "^2.3.0",
     "stylus": "0.53.0",
     "temp": "0.8.3",
     "watch": "^0.17.1"
