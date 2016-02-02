@@ -9,12 +9,11 @@
   "dependencies": {
     "checksum": "^0.1.1",
     "commander": "2.9.0",
-    "connect": "3.4.0",
-    "errorhandler": "^1.4.2",
+    "connect": "3.4.1",
+    "errorhandler": "^1.4.3",
     "jade": "1.11.0",
     "jstransformer-markdown": "^1.1.0",
-    "less": "2.5.3",
-    "markdown": "0.5.0",
+    "less": "2.6.0",
     "serve-favicon": "^2.3.0",
     "stylus": "0.53.0",
     "temp": "0.8.3",
@@ -37,7 +36,7 @@
     "node": ">=4.0.0"
   },
   "devDependencies": {
-    "chai": "^3.4.1",
-    "mocha": "^2.3.4"
+    "chai": "^3.5.0",
+    "mocha": "^2.4.5"
   }
 }

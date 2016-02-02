@@ -25,15 +25,14 @@ function compare(filename, data) {
   const expected = fs.readFileSync(prefix + filename + postfix, "utf8");
 
   const hb = imbue.parse(input);
+
   hb.header._filename = filename;
   const res = imbue.render(metadata._deepMerge(hb.header, data),
                          hb.body); // use markdown was here
-
   expect(res.trim()).to.equal(expected.trim());
 }
 
 describe('imbue', function() {
-
   it('a simple imbue file with no header information', () => {
     compare("jaded1.imd", {});
   });
